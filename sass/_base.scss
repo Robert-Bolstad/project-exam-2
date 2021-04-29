@@ -1,0 +1,56 @@
+/* Reset styles */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+h1 {
+  margin: 0px;
+  padding: 0px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Poppins", sans-serif;
+  margin: 0px;
+}
+
+p {
+  font-family: "Open Sans", sans-serif;
+  margin: 0px;
+}
+
+body {
+  margin: 0px;
+}
+
+li {
+  list-style: none;
+}
+
+ul {
+  padding: 0px;
+  margin: 0px;
+}
+
+a {
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+}
+
+button {
+  font-family: "Poppins", sans-serif;
+}
+
+#map {
+  height: 100%;
+}
+
+.map {
+  height: 500px;
+  width: 200px;
+}
