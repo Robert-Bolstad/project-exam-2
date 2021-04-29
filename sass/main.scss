@@ -1,0 +1,28 @@
+//setup
+@import "base";
+@import "variables";
+
+//components
+
+@import "components/nav";
+@import "components/searchbox";
+@import "components/featured";
+@import "components/card";
+@import "components/newsletter";
+@import "components/footer";
+@import "components/login-form";
+@import "components/contact-form";
+@import "components/contact-Info";
+@import "components/filter-list";
+@import "components/accommodation-card";
+@import "components/map";
+@import "components/establishment";
+@import "components/amenities.scss";
+@import "components/room-finder.scss";
+@import "components/nav-admin.scss";
+
+//pagestyles
+@import "pages/login";
+@import "pages/contact";
+@import "pages/accommodations";
+// @import "pages/home";
