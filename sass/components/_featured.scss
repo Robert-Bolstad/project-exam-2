@@ -1,0 +1,29 @@
+.featured {
+  padding: $contentpadding;
+  &__category {
+    display: flex;
+  }
+  &__subheading {
+    margin-left: 10px;
+  }
+  &__link {
+    display: block;
+    text-align: right;
+    color: $link;
+    font-weight: bold;
+  }
+  &__link--number {
+    color: $gray;
+  }
+  &__cards {
+    display: flex;
+    overflow-x: auto;
+  }
+  &__subheading {
+    font-family: $headline;
+  }
+  &__category {
+    padding-top: $contentpadding;
+    padding-bottom: $contentpadding;
+  }
+}

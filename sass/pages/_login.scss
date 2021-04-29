@@ -1,0 +1,32 @@
+.login {
+  text-align: center;
+  background-color: $light-gray;
+  &__main {
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  &__heading {
+    padding: $contentpadding;
+    font-size: 1.6em;
+    margin-top: 1rem;
+  }
+  &__icon-wrapper {
+    padding: $contentpadding;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .login {
+    &__main {
+      background-color: $white;
+      padding: $contentpadding;
+      padding-left: $contentpadding * 3;
+      padding-right: $contentpadding * 3;
+      margin-top: $contentpadding * 5;
+      margin-bottom: $contentpadding * 5;
+      box-shadow: $bordershadow;
+      border-radius: 15px;
+    }
+  }
+}

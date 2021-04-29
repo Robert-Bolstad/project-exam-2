@@ -1,0 +1,64 @@
+.room-finder {
+  &__heading {
+    padding: $contentpadding;
+    padding-bottom: 0px;
+  }
+  &__form {
+    font-family: $headline;
+  }
+  &__group-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    padding: $contentpadding/2;
+  }
+  &__group {
+    width: 50%;
+  }
+  &__input-wrapper {
+    width: 100%;
+    padding-left: $contentpadding;
+    padding-right: $contentpadding;
+    padding-bottom: $contentpadding/2;
+  }
+
+  &__group-inner {
+    display: flex;
+    align-items: center;
+    background-color: $light-gray;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 15px;
+    box-shadow: $bordershadow;
+    margin: $contentpadding / 2;
+  }
+  &__input-btn {
+    margin-left: 5px;
+  }
+
+  &__input-btn-text--top {
+    font-size: 0.8em;
+    color: $gray;
+  }
+  &__input-btn-text--bottom {
+    text-align: center;
+  }
+
+  &__submit {
+    background-color: $button;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 15px;
+    box-shadow: $bordershadow;
+    margin: $contentpadding / 2;
+    border: none;
+    display: flex;
+    align-items: center;
+    color: $white;
+    width: calc(50% - 1rem);
+  }
+  &__result-text {
+    padding: $contentpadding;
+    font-size: 0.8em;
+    color: $gray;
+  }
+}

@@ -1,0 +1,27 @@
+.card {
+  background-color: $light-gray;
+  margin-right: $contentpadding;
+  min-width: 100%;
+  border-radius: 15px;
+  box-shadow: $bordershadow;
+  margin-bottom: $contentpadding;
+  &__img {
+    border-radius: 15px 15px 0px 0px;
+  }
+  &__info {
+    padding: $contentpadding;
+  }
+  &__heading {
+    color: $link;
+    margin: 0px;
+    font-family: $headline;
+    font-size: 1.2em;
+  }
+  &__description {
+    padding-top: $contentpadding;
+    padding-bottom: $contentpadding;
+    margin: 0px;
+    font-family: $subheadline;
+    font-size: 0.9em;
+  }
+}

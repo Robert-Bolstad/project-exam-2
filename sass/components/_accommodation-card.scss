@@ -1,0 +1,34 @@
+.accommodation-card {
+  &__img > div:first-child {
+    border-radius: 15px;
+  }
+  &__inner {
+    display: flex;
+    padding-top: $contentpadding / 2;
+    margin-bottom: $contentpadding;
+  }
+  &__description {
+    padding-bottom: $contentpadding;
+    padding-top: $contentpadding/2;
+  }
+  &__link {
+    text-align: center;
+    padding: $contentpadding / 2;
+    display: block;
+    width: 120px;
+    color: $white;
+    background: $link;
+    border-radius: 15px;
+    font-size: 0.8em;
+  }
+
+  &__price {
+    font-family: $headline;
+    color: $secondary;
+    font-size: 1.8em;
+  }
+  &__price-text {
+    font-family: $subheadline;
+    font-size: 0.8em;
+  }
+}

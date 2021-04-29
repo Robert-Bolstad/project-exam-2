@@ -1,0 +1,29 @@
+.accommodations {
+  &__section--one {
+    background-color: $primary;
+  }
+  &__heading {
+    text-align: center;
+    font-size: 1.4em;
+    color: $white;
+    padding-top: $contentpadding * 2;
+    padding-bottom: $contentpadding;
+  }
+  &__section--two {
+    padding: $contentpadding;
+  }
+  &__result-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: $contentpadding;
+  }
+  &__open-map {
+    display: flex;
+    align-items: center;
+    padding: $contentpadding / 2;
+    border-radius: 15px;
+    border: 0px;
+    box-shadow: $bordershadow;
+  }
+}

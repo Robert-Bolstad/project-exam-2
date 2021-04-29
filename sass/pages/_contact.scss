@@ -1,0 +1,44 @@
+.contact {
+  max-width: $pagewidth;
+  margin-left: auto;
+  margin-right: auto;
+  &__heading {
+    font-size: 1.6em;
+    padding: $contentpadding;
+    margin-top: 2rem;
+  }
+  &__heading--highlight {
+    color: $secondary;
+  }
+  &__map {
+    height: 300px;
+    width: 100%;
+    padding-top: $contentpadding;
+    padding-bottom: $contentpadding;
+  }
+  &__map > div:first-child {
+    width: 100px;
+  }
+  &__map-marker {
+    width: 18px;
+    height: 18px;
+    border-radius: 100%;
+    border: 2px solid $white;
+    background-color: $primary;
+    box-shadow: $bordershadow;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .contact__map {
+    padding: $contentpadding;
+    padding-top: 0px;
+    height: 400px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .contact__map {
+    height: 500px;
+  }
+}

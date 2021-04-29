@@ -1,0 +1,145 @@
+.footer {
+  &__wrapper {
+    max-width: $pagewidth;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  &__border {
+    height: 1px;
+    width: 100%;
+    background-color: black;
+    margin-bottom: 1rem;
+  }
+  &__brand {
+    display: flex;
+    justify-content: center;
+    padding: $contentpadding;
+  }
+
+  &__logo-text {
+    margin-left: 5px;
+  }
+  &__site-name {
+    font-family: $headline;
+    margin: 0px;
+    padding: 0px;
+    font-size: 1.4em;
+    height: 28px;
+  }
+  &__site-name--color {
+    color: $primary;
+  }
+  &__site-subline {
+    font-family: $subheadline;
+    margin: 0px;
+    padding: 0px;
+    font-size: 0.8em;
+  }
+  &__contact {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  &__contact-item {
+    padding: $contentpadding/2;
+    font-family: $subheadline;
+    display: flex;
+  }
+  &__contact-text {
+    padding-left: 8px;
+  }
+  &__links {
+    text-align: center;
+    padding-top: $contentpadding;
+    padding-bottom: $contentpadding;
+  }
+  &__link-item {
+    padding: $contentpadding / 2;
+  }
+  &__link {
+    color: $black;
+    font-family: $subheadline;
+  }
+  &__link:hover {
+    color: $link;
+  }
+
+  &__bottom {
+    background-color: $secondary;
+  }
+  &__social {
+    display: flex;
+    justify-content: center;
+    padding: $contentpadding / 2;
+    padding-bottom: 0px;
+  }
+  &__social-item {
+    padding: $contentpadding/2;
+  }
+  &__copyright {
+    text-align: center;
+    color: $white;
+    font-family: $headline;
+    padding-bottom: $contentpadding;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .footer {
+    &__wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    &__brand {
+      width: 100%;
+    }
+    &__links {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 160px;
+      width: 25%;
+      padding: 0px;
+      margin: $contentpadding;
+    }
+
+    &__contact {
+      margin: 0px;
+      margin: $contentpadding;
+    }
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .footer {
+    &__wrapper {
+      justify-content: space-between;
+      padding: $contentpadding;
+      margin-bottom: 0px;
+    }
+    &__brand {
+      width: auto;
+      align-items: flex-start;
+      order: 3;
+      padding: 1.5rem;
+    }
+    &__bottom-inner {
+      display: flex;
+      align-items: center;
+      padding: $contentpadding;
+      max-width: $pagewidth;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    &__social {
+      padding: 0px;
+      margin-left: 0.5rem;
+    }
+    &__copyright {
+      position: absolute;
+      left: 0;
+      right: 0;
+      padding: 0px;
+    }
+  }
+}

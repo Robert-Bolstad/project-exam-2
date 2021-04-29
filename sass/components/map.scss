@@ -1,0 +1,67 @@
+.map {
+  position: fixed;
+  background-color: $white;
+  width: calc(100% - 32px);
+  height: 70vh;
+  box-shadow: $bordershadow;
+  top: 50%;
+  left: 50%;
+  border: 1px solid black;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 200ms ease-in-out;
+  z-index: 99;
+  &__marker {
+    padding: 8px;
+    border-radius: 100%;
+    border: 3px solid $white;
+    background-color: $primary;
+    box-shadow: $bordershadow;
+    cursor: pointer;
+  }
+  &__info {
+    width: 140px;
+    padding: $contentpadding/2;
+    text-align: center;
+  }
+  &__img > div:first-child {
+    border-radius: 15px;
+  }
+  &__price {
+    color: $secondary;
+    padding: $contentpadding/3;
+  }
+  &__btn {
+    display: block;
+  }
+  &__link {
+    background-color: $link;
+    padding: $contentpadding / 2;
+    display: block;
+    border-radius: 15px;
+    font-size: 0.8em;
+    color: $white;
+  }
+  &__overlay {
+    position: fixed;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    transition: 200ms ease-in-out;
+    pointer-events: none;
+  }
+  &__overlay--active {
+    pointer-events: all;
+    opacity: 1;
+  }
+  &__close {
+    margin: $contentpadding;
+  }
+}
+
+.map--open {
+  display: block;
+  transform: translate(-50%, -50%) scale(1);
+}

@@ -1,0 +1,22 @@
+.nav-admin {
+  background-color: $primary;
+  &__inner {
+    padding: $contentpadding;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    font-size: 1.3em;
+    color: $white;
+    font-family: $headline;
+  }
+  &__burger {
+    border: 0px;
+    padding: 0px;
+    display: flex;
+
+    background-color: transparent;
+  }
+}

@@ -1,0 +1,27 @@
+.amenities {
+  &__heading {
+    padding: $contentpadding;
+    padding-top: $contentpadding/2;
+  }
+  &__wrapper {
+    padding: $contentpadding;
+    background-color: $light-gray;
+    display: flex;
+    overflow-x: auto;
+  }
+  &__category {
+    min-width: 200px;
+  }
+
+  &__subheading {
+    color: $secondary;
+  }
+  &__list {
+    padding: $contentpadding;
+  }
+  &__item {
+    list-style-type: circle;
+    font-family: $subheadline;
+    font-size: 0.8em;
+  }
+}

@@ -1,0 +1,97 @@
+.nav {
+  box-shadow: $bordershadow;
+  background-color: $white;
+
+  &__inner {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: $white;
+    justify-content: space-between;
+    align-items: center;
+    max-width: $pagewidth;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  &__brand {
+    display: flex;
+    padding: $contentpadding;
+  }
+
+  &__logo-text {
+    margin-left: 5px;
+  }
+  &__site-name {
+    font-family: $headline;
+    margin: 0px;
+    padding: 0px;
+    font-size: 1.4em;
+    height: 28px;
+  }
+  &__site-name--color {
+    color: $primary;
+  }
+  &__site-subline {
+    font-family: $subheadline;
+    margin: 0px;
+    padding: 0px;
+    font-size: 0.8em;
+  }
+  &__burger {
+    margin: $contentpadding;
+    margin-left: auto;
+    padding: 0px;
+    border: 0px;
+    display: flex;
+  }
+
+  &__list {
+    width: 100%;
+    display: none;
+  }
+  &__list--open {
+    display: block;
+  }
+  &__item {
+    text-align: center;
+    border-bottom: 1px solid $white;
+  }
+  &__link {
+    text-decoration: none;
+    color: $white;
+    background-color: $primary;
+    padding: 20px;
+    width: 100%;
+    display: block;
+    font-family: $headline;
+    font-size: 0.8em;
+  }
+  &__link:hover {
+    background-color: $link;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .nav {
+    &__list {
+      display: block;
+      width: auto;
+      display: flex;
+    }
+    &__burger {
+      display: none;
+    }
+    &__link {
+      background-color: $white;
+      width: auto;
+      color: $primary;
+      padding: 0px;
+      margin: $contentpadding;
+      border-bottom: 1px solid $white;
+    }
+    &__link:hover {
+      background-color: transparent;
+      color: $link;
+      border-bottom: 1px solid $link;
+    }
+  }
+}

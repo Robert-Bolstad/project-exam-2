@@ -1,0 +1,66 @@
+.establishment {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: $contentpadding / 2;
+  &__heading {
+    padding: $contentpadding / 2;
+  }
+  &__heading--rating {
+    color: $secondary;
+    font-size: 0.6em;
+  }
+  &__description {
+    padding: $contentpadding / 2;
+  }
+  &__image {
+    padding: $contentpadding / 2;
+  }
+  &__list {
+    padding: $contentpadding / 2;
+  }
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    padding-bottom: $contentpadding/2;
+  }
+  &__list-info {
+    margin-left: 8px;
+    font-size: 0.8em;
+  }
+  &__price-wrapper {
+    padding: $contentpadding/2;
+  }
+  &__price {
+    font-family: $headline;
+    color: $secondary;
+    font-size: 1.8em;
+  }
+  &__price-text {
+    font-family: $subheadline;
+    font-size: 0.8em;
+  }
+  &__btn {
+    width: 100%;
+    margin: $contentpadding / 2;
+    border-radius: 15px;
+    border: 0px;
+    padding: $contentpadding/2;
+    background-color: $button;
+    color: $white;
+  }
+  &__map {
+    height: 250px;
+    width: 100%;
+    padding: $contentpadding / 2;
+  }
+  &__map-marker {
+    width: 18px;
+    height: 18px;
+    border-radius: 100%;
+    border: 2px solid $white;
+    background-color: $primary;
+    box-shadow: $bordershadow;
+  }
+}
