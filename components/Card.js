@@ -1,21 +1,20 @@
 import Image from "next/image";
-const Card = () => {
+import { BASE_URL } from "../settings/api";
+const Card = ({ hotel }) => {
   return (
     <div className="card">
-      <Image
-        className="card__img"
-        src="/placeholder.jpg"
-        width="auto"
-        height="300px"
-        alt="hotel image"
-      />
+      <div className="card__img">
+        <Image
+          src={BASE_URL + hotel.image.url}
+          width="100%"
+          height="250px"
+          alt="hotel image"
+        />
+      </div>
+
       <div className="card__info">
-        <h4 className="card__heading">Place name</h4>
-        <p className="card__description">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut
-          accusamus sunt reiciendis deserunt. Dignissimos qui earum animi aut
-          dolor at!
-        </p>
+        <h4 className="card__heading">{hotel.name}</h4>
+        <p className="card__description">{hotel.description}</p>
       </div>
     </div>
   );
