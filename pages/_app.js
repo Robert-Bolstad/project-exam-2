@@ -1,5 +1,5 @@
 import "../sass/main.scss";
-import "react-calendar/dist/Calendar.css";
+import "react-datepicker/dist/react-datepicker.css";
 
 import { AuthProvider } from "../context/AuthContext";
 
