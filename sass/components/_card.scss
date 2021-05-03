@@ -1,12 +1,14 @@
 .card {
   background-color: $light-gray;
-  margin-right: $contentpadding;
+  margin: $contentpadding/2;
   min-width: 100%;
   border-radius: 15px;
   box-shadow: $bordershadow;
-  margin-bottom: $contentpadding;
-  &__img {
+
+  &__img > div {
     border-radius: 15px 15px 0px 0px;
+    width: 100%;
+    max-width: 350px;
   }
   &__info {
     padding: $contentpadding;
@@ -23,5 +25,11 @@
     margin: 0px;
     font-family: $subheadline;
     font-size: 0.9em;
+  }
+}
+
+@media screen and (min-width: 400px) {
+  .card {
+    min-width: 350px;
   }
 }

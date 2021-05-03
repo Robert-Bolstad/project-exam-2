@@ -1,5 +1,8 @@
 .newsletter {
   padding: $contentpadding;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
   &__heading {
     color: $secondary;
   }
@@ -27,5 +30,16 @@
     position: absolute;
     right: 0 + $contentpadding;
     font-family: $subheadline;
+  }
+}
+
+@media screen and (min-width: 400px) {
+  .newsletter {
+    &__subscription {
+      max-width: 320px;
+    }
+    &__btn {
+      left: 300px;
+    }
   }
 }

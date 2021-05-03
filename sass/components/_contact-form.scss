@@ -1,5 +1,9 @@
 .contact-form {
-  padding: $contentpadding;
+  &__fieldset {
+    padding: $contentpadding;
+    border: 0px;
+    margin: 0px;
+  }
   &__group {
     margin-bottom: 1rem;
   }
@@ -36,13 +40,25 @@
     border-radius: 15px;
     cursor: pointer;
   }
+  &__success {
+    padding-left: $contentpadding;
+    font-family: $headline;
+    display: flex;
+    align-items: center;
+  }
+  &__check-img > div {
+    padding-left: $contentpadding;
+  }
 }
 
 @media screen and (min-width: 800px) {
   .contact-form {
-    padding: 0px;
-    display: flex;
-    flex-wrap: wrap;
+    &__fieldset {
+      padding: 0px;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
     &__wrapper {
       width: 50%;
       padding: $contentpadding;

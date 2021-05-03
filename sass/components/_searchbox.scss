@@ -13,6 +13,10 @@
     /* Note: backdrop-filter has minimal browser support */
 
     border-radius: 15px;
+    text-align: center;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
   }
   &__intro {
     padding: $contentpadding;
@@ -63,6 +67,18 @@
     padding-left: $contentpadding / 2;
     padding-top: 14px;
   }
+  &__search-list {
+    background-color: $white;
+    position: absolute;
+    z-index: 99;
+    width: calc(100% - 32px);
+    border-radius: 15px;
+    margin-top: $contentpadding/2;
+    max-width: 468px;
+  }
+  &__search-result {
+    width: 100%;
+  }
 
   &__group-inner {
     display: flex;
@@ -98,5 +114,99 @@
     align-items: center;
     color: $white;
     width: calc(50% - 1rem);
+  }
+}
+.react-datepicker-wrapper {
+  position: absolute !important;
+  margin-right: 8px;
+  margin-left: 8px;
+}
+
+.react-datepicker-wrapper input {
+  padding: 16px !important;
+  border-radius: 15px !important;
+  border: 2px solid $white !important;
+  width: calc(100% - 16px) !important;
+  margin: 8px;
+  height: 59px;
+  opacity: 0;
+}
+
+.searchbox__checkout .react-datepicker-popper div {
+  max-width: 243px !important;
+}
+
+.searchbox__checkout .react-datepicker-popper {
+  left: -100px !important;
+}
+
+.searchbox__checkout .react-datepicker__triangle {
+  left: 192px !important;
+}
+
+@media screen and (min-width: 500px) {
+  .searchbox {
+    &__group-wrapper {
+      display: flex;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    &__group {
+      width: 33.3333%;
+    }
+    &__input-wrapper {
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    &__submit {
+      width: 145.33px;
+      padding: $contentpadding;
+    }
+  }
+  .react-datepicker-wrapper input {
+    max-width: 145.33px !important;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .searchbox {
+    &__intro {
+      text-align: left;
+    }
+    &__subline {
+      padding-bottom: 0px;
+    }
+
+    &__wrapper {
+      margin-top: 8rem;
+    }
+    &__form {
+      display: flex;
+      align-items: center;
+      padding-bottom: 2rem;
+      margin-bottom: 8rem;
+      margin-left: 0;
+      margin-right: 0;
+    }
+    &__input-wrapper {
+      width: 45%;
+      padding-right: 0px;
+      margin: 0px;
+      max-width: none;
+      padding-bottom: 0px;
+    }
+    &__group {
+      width: 25%;
+      margin: 0px;
+    }
+    &__group-wrapper {
+      max-width: none;
+      width: 55%;
+    }
+    &__submit {
+      width: 20%;
+    }
   }
 }
