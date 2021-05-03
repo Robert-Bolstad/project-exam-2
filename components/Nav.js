@@ -6,8 +6,13 @@ const Nav = () => {
   const path = useRouter().pathname;
 
   function clickBurger() {
-    const list = document.querySelector(".nav__list");
-    list.classList.toggle("nav__list--open");
+    if (path !== "/admin") {
+      const list = document.querySelector(".nav__list");
+      list.classList.toggle("nav__list--open");
+    } else {
+      const list = document.querySelector(".nav-admin__list");
+      list.classList.toggle("nav-admin__list--open");
+    }
   }
 
   if (path !== "/admin") {
@@ -72,21 +77,14 @@ const Nav = () => {
               alt="burger"
             />
           </button>
-          <ul className="nav__list">
-            <li className="nav__item">
+          <ul className="nav-admin__list">
+            <li className="nav-admin__item">
               <Link href="/">
-                <a className="nav__link">Home</a>
+                <a className="nav-admin__link">Visit website</a>
               </Link>
             </li>
-            <li className="nav__item">
-              <Link href="/accommodations">
-                <a className="nav__link">Accommodations</a>
-              </Link>
-            </li>
-            <li className="nav__item">
-              <Link href="/contact">
-                <a className="nav__link">Contact</a>
-              </Link>
+            <li className="nav-admin__item">
+              <button className="nav-admin__btn">Logout</button>
             </li>
           </ul>
         </div>
