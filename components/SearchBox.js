@@ -1,6 +1,23 @@
 import Image from "next/image";
+import { useState, useEffect } from "react";
+import DatePicker from "react-datepicker";
 
-const SearchBox = () => {
+const SearchBox = (data) => {
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
+  const [results, setResults] = useState([]);
+
+  const search = (value) => {
+    const filteredResults = data.data.filter((hotel) =>
+      hotel.name.toLowerCase().includes(value.toLowerCase())
+    );
+    if (value.length < 1) {
+      setResults([]);
+    } else {
+      setResults(filteredResults);
+    }
+  };
+
   return (
     <section className="searchbox">
       <div className="searchbox__wrapper">
@@ -19,11 +36,25 @@ const SearchBox = () => {
               type="text"
               className="searchbox__input"
               placeholder="Enter name of hotel, B&amp;B or guesthouses"
+              onChange={(e) => search(e.target.value)}
             />
+            <ul className="searchbox__search-list">
+              {results.map((result) => {
+                return (
+                  <li key={result.id} className="searchbox__search-result">
+                    {result.name}
+                  </li>
+                );
+              })}
+            </ul>
           </div>
           <div className="searchbox__group-wrapper">
             <div className="searchbox__group">
-              <div className="searchbox__group-inner">
+              <div className="searchbox__group-inner searchbox__checkin">
+                <DatePicker
+                  selected={startDate}
+                  onChange={(date) => setStartDate(date)}
+                />
                 <Image
                   className="searchbox__icon"
                   src="/check-inn.svg"
@@ -32,15 +63,21 @@ const SearchBox = () => {
                   alt="logo"
                 />
                 <div className="searchbox__input-btn">
-                  <div className="searchbox__input-btn-text--top">Monday</div>
+                  <div className="searchbox__input-btn-text--top">
+                    {startDate.toDateString().slice(0, 3)}
+                  </div>
                   <div className="searchbox__input-btn-text--bottom">
-                    1 March
+                    {startDate.toDateString().slice(4, 10)}
                   </div>
                 </div>
               </div>
             </div>
             <div className="searchbox__group">
-              <div className="searchbox__group-inner">
+              <div className="searchbox__group-inner searchbox__checkout">
+                <DatePicker
+                  selected={endDate}
+                  onChange={(date) => setEndDate(date)}
+                />
                 <Image
                   className="searchbox__icon"
                   src="/check-out.svg"
@@ -49,9 +86,11 @@ const SearchBox = () => {
                   alt="logo"
                 />
                 <div className="searchbox__input-btn">
-                  <div className="searchbox__input-btn-text--top">Friday</div>
+                  <div className="searchbox__input-btn-text--top">
+                    {endDate.toDateString().slice(0, 3)}
+                  </div>
                   <div className="searchbox__input-btn-text--bottom">
-                    7 March
+                    {endDate.toDateString().slice(4, 10)}
                   </div>
                 </div>
               </div>
