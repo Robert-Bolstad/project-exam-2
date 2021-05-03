@@ -1,0 +1,61 @@
+.admin {
+  background-color: $light-gray;
+  min-height: 100vw;
+  &__container {
+    background-color: $white;
+  }
+  &__navigation {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $light-gray;
+  }
+  &__btn {
+    background-color: #e8ecf3;
+    border: 0px;
+    text-align: center;
+    width: 33.333333%;
+    padding-right: 6px;
+    padding-top: $contentpadding;
+    padding-bottom: $contentpadding;
+    cursor: pointer;
+  }
+  &__btn:hover {
+    background-color: $white;
+  }
+  &__btn--active {
+    background-color: $white;
+  }
+  &__enquiries {
+    display: none;
+  }
+  &__messages {
+    display: block;
+  }
+  &__establishments {
+    display: none;
+  }
+  &__container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .admin {
+    padding: $contentpadding;
+
+    &__section {
+      border: 1px solid $light-gray;
+      border-top: 0px;
+    }
+    &__navigation {
+      justify-content: left;
+    }
+    &__btn {
+      width: 150px;
+    }
+  }
+}

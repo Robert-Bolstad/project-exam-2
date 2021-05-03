@@ -1,0 +1,61 @@
+.messages {
+  padding: $contentpadding;
+  &__heading {
+    color: $secondary;
+    font-size: 1.4em;
+    padding: $contentpadding;
+    padding-left: 0px;
+    padding-bottom: $contentpadding * 2;
+  }
+  &__wrapper {
+    margin-bottom: $contentpadding;
+  }
+
+  &__message-btn {
+    text-align: left;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    scroll-behavior: none;
+    max-width: 100%;
+    min-width: 100%;
+    padding: $contentpadding;
+    padding-top: $contentpadding/2;
+    padding-bottom: $contentpadding/2;
+    border: 0px;
+    border-radius: 15px;
+  }
+  &__message-btn--read {
+    background-color: #3d5e78;
+    color: $white;
+  }
+  &__message-btn--unread {
+    background-color: #e8ecf3;
+    color: black;
+  }
+  &__info {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: $contentpadding;
+  }
+  &__info--bold {
+    font-weight: bold;
+  }
+  &__message {
+    display: none;
+  }
+  &__message--open {
+    display: block;
+  }
+
+  &__message-inner {
+    padding: $contentpadding;
+    border-bottom: 1px solid black;
+  }
+  &__message-info {
+    padding-bottom: $contentpadding;
+  }
+  &__message-info--bold {
+    font-weight: bold;
+  }
+}
