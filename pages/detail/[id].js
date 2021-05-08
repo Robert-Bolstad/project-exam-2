@@ -3,9 +3,9 @@ import { BASE_URL } from "../../settings/api";
 import Head from "../../components/layout/Head";
 import Layout from "../../components/layout/Layout";
 import Image from "next/image";
-import Link from "next/link";
 import ContactMap from "../../components/ContactMap";
 import RoomFinder from "../../components/RoomFinder";
+import Footer from "../../components/Footer";
 
 export default function Establishment({ establishment }) {
   return (
@@ -13,7 +13,7 @@ export default function Establishment({ establishment }) {
       <Head title={establishment.name} />
       <main>
         <section className="establishment">
-          <div>
+          <div className="establishment__intro">
             <h1 className="establishment__heading">
               {establishment.name}
               <span className="establishment__heading--rating">
@@ -24,52 +24,45 @@ export default function Establishment({ establishment }) {
               {establishment.description}
             </p>
           </div>
-
           <div className="establishment__image">
             <Image
               src={BASE_URL + establishment.image.url}
-              width="auto"
-              height="180px"
+              width="1000px"
+              height="667px"
               alt="image of establishment"
             />
           </div>
 
-          <ul className="establishment__list">
-            <li className="establishment__item">
-              <div className="establishment__list-icon">
-                <Image
-                  src="/check.svg"
-                  width="15px"
-                  height="15x"
-                  alt="check icon"
-                />
-              </div>
+          <ul className="establishment__list establishment__list--desktop">
+            <li className="establishment__item establishment__item--desktop">
+              <Image
+                src="/check.svg"
+                width="15px"
+                height="15x"
+                alt="check icon"
+              />
               <p className="establishment__list-info">
                 {establishment.accommodation_highlights.highlights[0]}
               </p>
             </li>
-            <li className="establishment__item">
-              <div className="establishment__list-icon">
-                <Image
-                  src="/check.svg"
-                  width="15px"
-                  height="15x"
-                  alt="check icon"
-                />
-              </div>
+            <li className="establishment__item establishment__item--desktop">
+              <Image
+                src="/check.svg"
+                width="15px"
+                height="15x"
+                alt="check icon"
+              />
               <p className="establishment__list-info">
                 {establishment.accommodation_highlights.highlights[1]}
               </p>
             </li>
-            <li className="establishment__item">
-              <div className="establishment__list-icon">
-                <Image
-                  src="/check.svg"
-                  width="15px"
-                  height="15x"
-                  alt="check icon"
-                />
-              </div>
+            <li className="establishment__item establishment__item--desktop">
+              <Image
+                src="/check.svg"
+                width="15px"
+                height="15x"
+                alt="check icon"
+              />
               <p className="establishment__list-info">
                 {establishment.accommodation_highlights.highlights[2]}
               </p>
@@ -82,54 +75,52 @@ export default function Establishment({ establishment }) {
             <div className="establishment__price-text">per night</div>
           </div>
           <button className="establishment__btn">Find Room</button>
-
-          <ContactMap
-            map="establishment__map"
-            marker="establishment__map-marker"
-            lat={establishment.geometry.latitude}
-            long={establishment.geometry.longitude}
-          />
-          <ul className="establishment__list">
-            <li className="establishment__item">
-              <div className="establishment__list-icon">
+          <div className="establishment__contact">
+            <ContactMap
+              map="establishment__map"
+              marker="establishment__map-marker"
+              lat={establishment.geometry.latitude}
+              long={establishment.geometry.longitude}
+            />
+            <ul className="establishment__list">
+              <li className="establishment__item">
                 <Image
                   src="/phone.svg"
                   width="15px"
                   height="15x"
                   alt="phone icon"
                 />
-              </div>
-              <p className="establishment__list-info">
-                {establishment.contact.phone}
-              </p>
-            </li>
-            <li className="establishment__item">
-              <div className="establishment__list-icon">
+
+                <p className="establishment__list-info">
+                  {establishment.contact.phone}
+                </p>
+              </li>
+              <li className="establishment__item">
                 <Image
                   src="/mail.svg"
                   width="15px"
                   height="15x"
                   alt="mail icon"
                 />
-              </div>
-              <p className="establishment__list-info">
-                {establishment.contact.email}
-              </p>
-            </li>
-            <li className="establishment__item">
-              <div className="establishment__list-icon">
+
+                <p className="establishment__list-info">
+                  {establishment.contact.email}
+                </p>
+              </li>
+              <li className="establishment__item">
                 <Image
                   src="/location.svg"
                   width="15px"
                   height="15x"
                   alt="location icon"
                 />
-              </div>
-              <p className="establishment__list-info">
-                {establishment.contact.adress}
-              </p>
-            </li>
-          </ul>
+
+                <p className="establishment__list-info">
+                  {establishment.contact.adress}
+                </p>
+              </li>
+            </ul>
+          </div>
         </section>
         <section className="amenities">
           <h2 className="amenities__heading">Property highlights</h2>
@@ -174,6 +165,7 @@ export default function Establishment({ establishment }) {
         </section>
         <RoomFinder data={establishment} />
       </main>
+      <Footer />
     </Layout>
   );
 }
