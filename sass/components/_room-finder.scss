@@ -1,10 +1,14 @@
 .room-finder {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
   &__heading {
     padding: $contentpadding;
     padding-bottom: 0px;
   }
   &__form {
     font-family: $headline;
+    max-width: 700px;
   }
   &__group-wrapper {
     display: flex;
@@ -42,23 +46,210 @@
   &__input-btn-text--bottom {
     text-align: center;
   }
+  &__input-number {
+    width: 50px;
+  }
 
   &__submit {
     background-color: $button;
     justify-content: center;
-    padding: 8px;
+    padding: 13px;
     border-radius: 15px;
     box-shadow: $bordershadow;
-    margin: $contentpadding / 2;
     border: none;
     display: flex;
     align-items: center;
     color: $white;
-    width: calc(50% - 1rem);
+    margin: $contentpadding/2;
+    width: calc(100% - 16px);
   }
   &__result-text {
     padding: $contentpadding;
     font-size: 0.8em;
     color: $gray;
   }
+  &__result {
+    padding: $contentpadding;
+    padding-top: 0px;
+    max-width: 800px;
+  }
+
+  &__room-info--icon {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__card {
+    padding-top: $contentpadding;
+    padding-bottom: $contentpadding;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  &__image {
+    order: 1;
+  }
+  &__image--desktop {
+    display: none;
+  }
+  &__room-heading {
+    order: 2;
+    width: 50%;
+  }
+  &__price-wrapper {
+    display: flex;
+    flex-direction: column;
+    order: 3;
+    width: 50%;
+  }
+  &__room-info {
+    order: 4;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 200px;
+    color: $gray;
+    font-family: $subheadline;
+    font-size: 0.8em;
+  }
+  &__description {
+    order: 5;
+    padding-top: $contentpadding / 2;
+    padding-bottom: $contentpadding/2;
+  }
+  &__quantity-wrapper {
+    order: 6;
+    color: $secondary;
+    padding-top: $contentpadding/2;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__price {
+    display: block;
+    text-align: right;
+    font-family: $headline;
+    font-size: 1.4em;
+    color: $secondary;
+  }
+  &__price-info {
+    text-align: right;
+    font-family: $subheadline;
+    font-size: 0.8em;
+  }
+
+  &__quantity {
+    padding: $contentpadding / 4;
+    border: 1px solid #6b6969;
+    border-radius: 15px;
+    margin-top: $contentpadding / 2;
+    margin-right: $contentpadding * 3;
+    padding-left: $contentpadding;
+  }
+  &__book-btn {
+    width: calc(100% - 16px);
+    margin: 0.5rem;
+    margin-top: 0px;
+    border-radius: 15px;
+    border: 0px;
+    padding: 0.5rem;
+    background-color: #3d5e78;
+    color: #ffffff;
+    cursor: pointer;
+  }
+}
+
+@media screen and (min-width: 450px) {
+  .room-finder {
+    &__book-btn {
+      width: 150px;
+    }
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .room-finder {
+    &__group {
+      width: 25%;
+    }
+    &__result-inner {
+      display: flex;
+    }
+    &__image--desktop {
+      display: inline-flex;
+      order: 1;
+      max-width: 40%;
+      padding: $contentpadding;
+      padding-left: 0px;
+    }
+    &__image--mobile {
+      display: none;
+    }
+    &__card {
+      justify-content: space-between;
+      width: 70%;
+      order: 2;
+    }
+    &__image {
+      order: 1;
+      width: 100%;
+    }
+    &__room-heading {
+      order: 2;
+      width: 50%;
+    }
+    &__price-wrapper {
+      order: 3;
+      width: 50%;
+    }
+    &__description {
+      order: 4;
+      padding-bottom: $contentpadding;
+      padding-top: $contentpadding;
+      width: 80%;
+    }
+    &__room-info {
+      order: 5;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 200px;
+      color: $gray;
+      font-family: $subheadline;
+      font-size: 0.8em;
+    }
+    &__quantity {
+      margin-left: $contentpadding * 3;
+      margin-right: 0px;
+    }
+  }
+}
+
+.react-datepicker-wrapper {
+  position: absolute !important;
+  margin-right: 8px;
+  margin-left: 8px;
+}
+
+.react-datepicker-wrapper input {
+  padding: 16px !important;
+  border-radius: 15px !important;
+  border: 2px solid $white !important;
+  width: calc(100% - 16px) !important;
+  margin: 8px;
+  height: 59px;
+  opacity: 0;
+}
+
+.room-finder__group--checkout .react-datepicker-popper div {
+  max-width: 243px !important;
+}
+
+.room-finder__group--checkout .react-datepicker-popper {
+  left: -100px !important;
+}
+
+.room-finder__group--checkout .react-datepicker__triangle {
+  left: 192px !important;
 }

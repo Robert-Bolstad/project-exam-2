@@ -28,10 +28,10 @@
     background-color: $white;
   }
   &__enquiries {
-    display: none;
+    display: block;
   }
   &__messages {
-    display: block;
+    display: none;
   }
   &__establishments {
     display: none;

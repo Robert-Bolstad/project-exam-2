@@ -1,6 +1,8 @@
 .accommodation-card {
   &__img > div:first-child {
     border-radius: 15px;
+    width: 100%;
+    height: 180px;
   }
   &__inner {
     display: flex;
@@ -30,5 +32,33 @@
   &__price-text {
     font-family: $subheadline;
     font-size: 0.8em;
+  }
+  &__price-text--highlight {
+    font-family: $headline;
+  }
+  &__info {
+    padding-right: $contentpadding;
+  }
+}
+
+@media screen and (min-width: 450px) {
+  .accommodation-card {
+    &__img > div:first-child {
+      height: 250px;
+    }
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .accommodation-card {
+    display: flex;
+    &__img > div:first-child {
+      height: auto;
+      width: 200px;
+    }
+    &__img {
+      padding: $contentpadding;
+      padding-left: 0px;
+    }
   }
 }

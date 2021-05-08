@@ -17,13 +17,18 @@
 @import "components/accommodation-card";
 @import "components/map";
 @import "components/establishment";
-@import "components/amenities.scss";
-@import "components/room-finder.scss";
-@import "components/nav-admin.scss";
-@import "components/messages.scss";
+@import "components/amenities";
+@import "components/room-finder";
+@import "components/nav-admin";
+@import "components/messages";
+@import "components/BookingForm";
+@import "components/BookingInfo";
+@import "components/Enquiries.scss";
+@import "components/Establishments";
 
 //pagestyles
 @import "pages/login";
+@import "pages/enquiry";
 @import "pages/contact";
 @import "pages/accommodations";
 @import "pages/admin";

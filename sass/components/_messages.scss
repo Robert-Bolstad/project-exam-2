@@ -1,61 +1,75 @@
-.messages {
-  padding: $contentpadding;
+.Messages {
+  display: flex;
+  flex-flow: wrap;
+  padding: $contentpadding / 2;
   &__heading {
     color: $secondary;
     font-size: 1.4em;
     padding: $contentpadding;
-    padding-left: 0px;
+    padding-left: $contentpadding/2;
     padding-bottom: $contentpadding * 2;
+    padding-top: $contentpadding * 2;
+    width: 100%;
   }
   &__wrapper {
-    margin-bottom: $contentpadding;
+    padding: $contentpadding/2;
+    width: 100%;
+    vertical-align: top;
   }
-
-  &__message-btn {
-    text-align: left;
-    overflow-y: hidden;
-    overflow-x: hidden;
-    scroll-behavior: none;
-    max-width: 100%;
-    min-width: 100%;
-    padding: $contentpadding;
-    padding-top: $contentpadding/2;
-    padding-bottom: $contentpadding/2;
+  &__btn {
+    width: 100%;
+    border-radius: 0px;
     border: 0px;
-    border-radius: 15px;
-  }
-  &__message-btn--read {
-    background-color: #3d5e78;
+    padding: $contentpadding;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    background-color: $button;
     color: $white;
   }
-  &__message-btn--unread {
-    background-color: #e8ecf3;
-    color: black;
+  &__btn-img {
+    height: 20px;
+    padding: 3px;
+    transition: 400ms;
   }
-  &__info {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    padding-right: $contentpadding;
+  &__btn--unread {
+    background-color: $secondary;
   }
-  &__info--bold {
-    font-weight: bold;
+  &__btn--read {
+    background-color: $button;
+  }
+  &__btn-img--open {
+    transform: rotate(90deg);
+  }
+  &__text {
+    font-family: $subheadline;
   }
   &__message {
     display: none;
+    border: 1px solid $light-gray;
+    padding: $contentpadding / 2;
   }
+
   &__message--open {
     display: block;
   }
 
-  &__message-inner {
-    padding: $contentpadding;
-    border-bottom: 1px solid black;
-  }
   &__message-info {
-    padding-bottom: $contentpadding;
+    font-weight: bolder;
+    padding: $contentpadding/2;
   }
-  &__message-info--bold {
-    font-weight: bold;
+  &__message-detail {
+    font-weight: lighter;
+  }
+  &__message-content {
+    padding: $contentpadding/2;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .Messages {
+    &__wrapper {
+      width: 50%;
+    }
   }
 }

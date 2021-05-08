@@ -65,3 +65,16 @@
   display: block;
   transform: translate(-50%, -50%) scale(1);
 }
+
+@media screen and (min-width: 1000px) {
+  .map {
+    transform: none;
+    position: inherit;
+    width: 40%;
+    height: 70vh;
+    max-height: 500px;
+    box-shadow: none;
+    border: 0px;
+    margin-top: $contentpadding / 2;
+  }
+}
