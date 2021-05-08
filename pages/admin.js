@@ -10,7 +10,7 @@ import Establishments from "../components/Establishments";
 import { BASE_URL } from "../settings/api";
 import axios from "axios";
 
-export default function admin({ messages }) {
+export default function admin({ messages, enquiries, establishments }) {
   const [auth] = useContext(AuthContext);
   const router = useRouter();
 
@@ -76,13 +76,13 @@ export default function admin({ messages }) {
           </div>
           <div className="admin__section">
             <div className="admin__enquiries">
-              <Enquiries />
+              <Enquiries data={enquiries} />
             </div>
             <div className="admin__messages">
               <Messages data={messages} />
             </div>
             <div className="admin__establishments">
-              <Establishments />
+              <Establishments data={establishments} />
             </div>
           </div>
         </div>
@@ -92,13 +92,18 @@ export default function admin({ messages }) {
 }
 
 export async function getStaticProps() {
-  let messages = [];
+  let messages;
+  let enquiries;
+  let establishments;
 
   try {
-    const response = await axios.get(BASE_URL + "/messages");
+    const getMessages = await axios.get(BASE_URL + "/messages");
+    const getEnquiries = await axios.get(BASE_URL + "/enquiries");
+    const getEstablishments = await axios.get(BASE_URL + "/establishments");
 
-    messages = response.data;
-    console.log(messages);
+    enquiries = getEnquiries.data;
+    messages = getMessages.data;
+    establishments = getEstablishments.data;
   } catch (error) {
     console.log(error);
   }
@@ -106,6 +111,8 @@ export async function getStaticProps() {
   return {
     props: {
       messages: messages,
+      enquiries: enquiries,
+      establishments: establishments,
     },
   };
 }
