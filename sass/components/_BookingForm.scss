@@ -1,0 +1,57 @@
+.bookingForm {
+  padding: $contentpadding/2;
+  &__fieldset {
+    padding: $contentpadding/2;
+    border: 0px;
+    margin: 0px;
+  }
+  &__heading {
+    font-size: 1em;
+    padding: $contentpadding/2;
+  }
+  &__group {
+    margin-bottom: 1rem;
+  }
+  &__label {
+    margin-bottom: 6px;
+    display: block;
+    font-family: $subheadline;
+    font-size: 0.9em;
+  }
+  &__input {
+    width: 100%;
+    padding: $contentpadding/2;
+    background-color: $light-gray;
+    border: 0.5px;
+    box-shadow: $bordershadow;
+  }
+  &__textbox {
+    width: 100%;
+    padding: $contentpadding/2;
+    background-color: $light-gray;
+    border: 0.5px;
+    box-shadow: $bordershadow;
+    resize: none;
+    height: 200px;
+  }
+  &__submit {
+    padding: $contentpadding / 2;
+    padding-left: $contentpadding;
+    padding-right: $contentpadding;
+    color: $white;
+    border: 0.5px;
+    box-shadow: $bordershadow;
+    background-color: $button;
+    border-radius: 15px;
+    cursor: pointer;
+  }
+  &__success {
+    padding-left: $contentpadding;
+    font-family: $headline;
+    display: flex;
+    align-items: center;
+  }
+  &__check-img > div {
+    padding-left: $contentpadding;
+  }
+}
