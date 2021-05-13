@@ -1,12 +1,27 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
 
 const Nav = () => {
   const path = useRouter().pathname;
+  const [admin, setAdmin] = useState();
+
+  useEffect(() => {
+    switch (path) {
+      case "/admin":
+        setAdmin(true);
+        break;
+      case "/addestablishment":
+        setAdmin(true);
+        break;
+      default:
+        setAdmin(false);
+    }
+  }, []);
 
   function clickBurger() {
-    if (path !== "/admin") {
+    if (admin === false) {
       const list = document.querySelector(".nav__list");
       list.classList.toggle("nav__list--open");
     } else {
@@ -15,7 +30,7 @@ const Nav = () => {
     }
   }
 
-  if (path !== "/admin") {
+  if (admin === false) {
     return (
       <nav className="nav">
         <div className="nav__inner">
