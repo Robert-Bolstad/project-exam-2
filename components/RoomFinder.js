@@ -1,66 +1,97 @@
 import Image from "next/image";
 import { BASE_URL } from "../settings/api";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import { useRouter } from "next/router";
-import EnquiryContext from "../context/EnquiryContext";
+import { setLocale } from "yup";
 
 const RoomFinder = ({ data }) => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [guests, setGuests] = useState(1);
-  const [order, setOrder] = useState(null);
-  const [rooms, setRoms] = useState(data.rooms);
-  const [page, setPage] = useState(false);
-  const [, setEnquiry] = useContext(EnquiryContext);
+  const [order, setOrder] = useState();
+  const [rooms, setRooms] = useState(data.rooms);
+  const [selectedRooms, setSelectedRooms] = useState();
 
   const router = useRouter();
 
-  let arr = [];
+  let bookedRooms = [];
 
   useEffect(() => {
-    setEnquiry(order);
-    if (page === true) {
-      console.log(order);
+    const storageData = JSON.parse(localStorage.getItem("booking-data"));
+    if (storageData) {
+      setStartDate(new Date(storageData.checkIn));
+      setEndDate(new Date(storageData.checkOut));
+      setGuests(storageData.guests);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (order) {
+      localStorage.setItem("booked-data", JSON.stringify(order));
       router.push("/enquiry");
     }
-  }, [page]);
+  }, [order]);
 
-  const handleRooms = (e) => {
-    const quantity = e.options.selectedIndex;
-    const name = e.parentElement.parentElement.querySelector(
-      ".room-finder__room-heading"
-    ).innerHTML;
-
-    if (quantity === 0) {
-      e.parentElement.parentElement.dataset.selected = "no";
-      console.log(e.parentElement.parentElement.dataset);
-      function addToArr() {
-        const filteredResults = rooms.filter((room) => room.name === name);
-        arr.pop(filteredResults);
-      }
-      addToArr();
-    } else {
-      e.parentElement.parentElement.dataset.selected = "yes";
-      console.log(e.parentElement.parentElement.dataset);
-
-      function removeFromArr() {
-        const filteredResults = rooms.filter((room) => room.name === name);
-        arr.push(filteredResults);
-      }
-      removeFromArr();
+  const handleGuests = (value) => {
+    switch (value) {
+      case 0:
+        setGuests(1);
+        break;
+      case "":
+        setGuests(1);
+        break;
+      default:
+        setGuests(value);
+    }
+    if (value > 50) {
+      setGuests(50);
     }
   };
 
-  const handleBooking = () => {
+  const handleRooms = (e) => {
+    e.preventDefault();
+    const quantity = e.target.value;
+    const name = e.target.parentElement.parentElement.querySelector(
+      ".room-finder__room-heading"
+    ).innerHTML;
+
+    const removeRoom = bookedRooms.filter((room) => room.room.name === name);
+    const filteredResults = rooms.filter((room) => room.name === name);
+
+    if (quantity == 0) {
+      function removeFromArr() {
+        bookedRooms.shift(filteredResults);
+      }
+      removeFromArr();
+    } else {
+      function addToArr() {
+        if (removeRoom.length === 0) {
+          bookedRooms.push({
+            room: filteredResults[0],
+            quantity: quantity,
+          });
+        } else {
+          bookedRooms.shift(removeRoom);
+          bookedRooms.push({
+            room: filteredResults[0],
+            quantity: quantity,
+          });
+        }
+      }
+      addToArr();
+    }
+  };
+
+  const handleBooking = (e) => {
+    e.preventDefault();
     setOrder({
       hotelInfo: data,
-      checkInn: startDate,
+      checkIn: startDate,
       checkOut: endDate,
       guests: parseInt(guests),
-      rooms: arr,
+      bookedRooms: bookedRooms,
     });
-    setPage(true);
   };
 
   return (
@@ -127,7 +158,7 @@ const RoomFinder = ({ data }) => {
                 <div className="room-finder__input-btn">
                   <div className="room-finder__input-btn-text--top">Guests</div>
                   <input
-                    onChange={(e) => setGuests(e.target.value)}
+                    onChange={(e) => handleGuests(e.target.value)}
                     type="number"
                     value={guests}
                     className="room-finder__input-number room-finder__input-btn-text--bottom"
@@ -207,7 +238,7 @@ const RoomFinder = ({ data }) => {
                     </h5>
                     <select
                       onChange={(e) => {
-                        handleRooms(e.target);
+                        handleRooms(e);
                       }}
                       name="quantity"
                       className="room-finder__quantity"
@@ -234,7 +265,7 @@ const RoomFinder = ({ data }) => {
           })}
         </div>
         <button
-          onClick={() => handleBooking()}
+          onClick={(e) => handleBooking(e)}
           className="room-finder__book-btn"
         >
           Book Now
