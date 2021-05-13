@@ -2,15 +2,23 @@
   display: flex;
   flex-flow: wrap;
   padding: $contentpadding / 2;
+  &__top {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $contentpadding/2;
+    margin-top: $contentpadding + $contentpadding/2;
+    margin-bottom: $contentpadding + $contentpadding/2;
+  }
   &__heading {
     color: $secondary;
     font-size: 1.4em;
-    padding: $contentpadding;
-    padding-left: $contentpadding/2;
-    padding-bottom: $contentpadding * 2;
-    padding-top: $contentpadding * 2;
-    width: 100%;
   }
+  &__link {
+    color: $link;
+  }
+
   &__wrapper {
     padding: $contentpadding/2;
     width: 100%;

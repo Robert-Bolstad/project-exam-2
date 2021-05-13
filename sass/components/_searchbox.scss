@@ -101,6 +101,14 @@
   &__input-btn-text--bottom {
     text-align: center;
   }
+  &__input-number {
+    text-align: center;
+    width: 50%;
+    border: 0px;
+    font-family: $headline;
+    font-size: 1em;
+    text-align: right;
+  }
 
   &__submit {
     background-color: $button;

@@ -12,6 +12,9 @@
   &__group {
     margin-bottom: 1rem;
   }
+  &__group--hidden {
+    display: none;
+  }
   &__label {
     margin-bottom: 6px;
     display: block;
@@ -45,12 +48,7 @@
     border-radius: 15px;
     cursor: pointer;
   }
-  &__success {
-    padding-left: $contentpadding;
-    font-family: $headline;
-    display: flex;
-    align-items: center;
-  }
+
   &__check-img > div {
     padding-left: $contentpadding;
   }

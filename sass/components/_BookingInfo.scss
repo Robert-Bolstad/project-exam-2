@@ -1,6 +1,43 @@
 .bookingInfo {
-  padding: $contentpadding / 2;
   &__heading {
+    font-size: 1.33em;
+    padding: $contentpadding/2;
+  }
+  &__img {
+    padding: $contentpadding/2;
+  }
+  &__inner {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  &__wrapper {
+    padding: $contentpadding/2;
+    padding-bottom: 0px;
+  }
+  &__item {
+    padding-bottom: $contentpadding/2;
+    font-family: $subheadline;
+    font-size: 1em;
+  }
+
+  &__booked-rooms {
+    font-size: 1em;
+    padding-bottom: $contentpadding/2;
+  }
+  &__booked-details {
+    font-size: 1em;
+    padding-bottom: $contentpadding/2;
+  }
+  &__subtotal-wrapper {
+    display: flex;
+    align-items: center;
+    padding: $contentpadding/2;
+    max-width: 170px;
+  }
+  &__subtotal {
+    padding-left: 5px;
+  }
+  &__subtotal-heading {
     font-size: 1em;
   }
 }
