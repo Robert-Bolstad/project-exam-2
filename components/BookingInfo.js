@@ -1,29 +1,77 @@
 import Image from "next/image";
 import { BASE_URL } from "../settings/api";
-import { useContext, useEffect, useState } from "react";
-const BookingInfo = ({ data }) => {
+const BookingInfo = ({
+  data,
+  calculateRoomPrice,
+  calculateDays,
+  calculateSubtotal,
+}) => {
+  console.log(data);
+
+  const startDate = new Date(data.checkIn);
+  const endDate = new Date(data.checkOut);
+
   return (
     <div className="bookingInfo">
-      <Image
-        className="room-finder__icon"
-        src={BASE_URL + data.hotelInfo.image.url}
-        width="1000"
-        height="667"
-        alt="logo"
-      />
+      <div className="bookingInfo__img">
+        <Image
+          className="room-finder__icon"
+          src={BASE_URL + data.hotelInfo.image.url}
+          width={data.hotelInfo.image.width}
+          height={data.hotelInfo.image.height}
+          alt="hotel image"
+        />
+      </div>
+
       <h2 className="bookingInfo__heading">Your order</h2>
-      <p>Accommodation: {data.hotelInfo.name}</p>
-      <p>{`Check In: ${data.checkInn}`}</p>
-      <p>{`Check Out: ${data.checkOut}`}</p>
-      <ul>
-        {data.rooms.map((room) => {
-          return (
-            <li key={Math.random()}>
-              {room[0].name} {"$" + room[0].price + "x2"}
+      <div className="bookingInfo__inner">
+        <div className="bookingInfo__wrapper">
+          <h3 className="bookingInfo__booked-details">Booked Details:</h3>
+          <ul className="bookingInfo__list">
+            <li className="bookingInfo__item">
+              Accommodation:
+              {" " + data.hotelInfo.name}
             </li>
-          );
-        })}
-      </ul>
+            <li className="bookingInfo__item">
+              Check In:
+              {" " + startDate.toDateString() + " 12:00AM"}
+            </li>
+            <li className="bookingInfo__item">
+              Check Out:
+              {" " + endDate.toDateString() + " 03:00AM"}
+            </li>
+          </ul>
+        </div>
+        <div className="bookingInfo__wrapper">
+          <h3 className="bookingInfo__booked-rooms">Booked Rooms:</h3>
+          <ul className="bookingInfo__list">
+            {data.bookedRooms.map((room) => {
+              return (
+                <li className="bookingInfo__item" key={Math.random()}>
+                  {room.quantity +
+                    " x " +
+                    room.room.name +
+                    " $" +
+                    room.room.price +
+                    " x" +
+                    calculateDays(startDate, endDate) +
+                    " Days"}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </div>
+      <div className="bookingInfo__subtotal-wrapper">
+        <h3 className="bookingInfo__subtotal-heading">Subtotal:</h3>
+        <p className="bookingInfo__subtotal">
+          $
+          {calculateSubtotal(
+            calculateRoomPrice(data.bookedRooms),
+            calculateDays(startDate, endDate)
+          )}
+        </p>
+      </div>
     </div>
   );
 };
