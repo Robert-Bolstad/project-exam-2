@@ -1,40 +1,35 @@
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import { BASE_URL } from "../settings/api";
 import Image from "next/image";
+import { schema } from "../utils/schemaVaidator";
 
-const Booking = () => {
+const Booking = ({
+  data,
+  calculateRoomPrice,
+  calculateDays,
+  calculateSubtotal,
+}) => {
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState("");
-  const schema = yup.object().shape({
-    firstName: yup
-      .string()
-      .required("* Please enter your first name")
-      .min(3, "* First Name must be at least 3 characters"),
 
-    lastName: yup
-      .string()
-      .required("* Please enter your last name")
-      .min(4, "* Last Name must be at least 4 characters"),
+  const startDate = new Date(data.checkIn);
+  const endDate = new Date(data.checkOut);
 
-    email: yup
-      .string()
-      .required("* Please enter an email address")
-      .email("* Please enter a valid email address"),
+  const getRooms = () => {
+    let rooms = [];
 
-    phone: yup
-      .number()
-      .required("* Please enter your last name")
-      .min(8, "* Subject must be at least 8 characters"),
-
-    message: yup
-      .string()
-      .required("* Please enter an message")
-      .min(10, "* The message must be at least 10 characters"),
-  });
+    data.bookedRooms.forEach((room) => {
+      rooms.push({
+        name: room.room.name,
+        price: room.room.price,
+        quantity: parseInt(room.quantity),
+      });
+    });
+    return { rooms: rooms };
+  };
 
   function successHtml() {
     return (
@@ -52,11 +47,14 @@ const Booking = () => {
   });
 
   const onSubmit = async (data) => {
+    const rooms = getRooms();
+    const post = Object.assign(data, rooms);
+
     setSubmitting(true);
 
     try {
-      const response = await axios.post(BASE_URL + "/enquiries", data);
-      console.log(data);
+      const response = await axios.post(BASE_URL + "/enquiries", post);
+      console.log(response);
     } catch (error) {
       console.log("error", error);
     } finally {
@@ -67,10 +65,62 @@ const Booking = () => {
   return (
     <div className="bookingForm">
       <h2 className="bookingForm__heading">Reservation Details</h2>
+      <div className="bookingForm__success">{success}</div>
       <form onSubmit={handleSubmit(onSubmit)} className="bookingForm-form">
-        <div className="bookingForm__success">{success}</div>
         <fieldset className="bookingForm__fieldset" disabled={submitting}>
           <div className="bookingForm__wrapper">
+            <div className="bookingForm__group bookingForm__group--hidden">
+              <input
+                ref={register}
+                type="text"
+                name="hotel"
+                value={data.hotelInfo.name}
+              />
+            </div>
+            <div className="bookingForm__group bookingForm__group--hidden">
+              <input
+                ref={register}
+                type="number"
+                name="guests"
+                value={data.guests}
+              />
+            </div>
+            <div className="bookingForm__group bookingForm__group--hidden">
+              <input
+                ref={register}
+                type="text"
+                name="checkIn"
+                value={startDate.toISOString()}
+              />
+            </div>
+            <div className="bookingForm__group bookingForm__group--hidden">
+              <input
+                ref={register}
+                type="text"
+                name="checkOut"
+                value={endDate.toISOString()}
+              />
+            </div>
+            <div className="bookingForm__group bookingForm__group--hidden">
+              <input
+                ref={register}
+                type="text"
+                name="checkOut"
+                value={endDate.toISOString()}
+              />
+            </div>
+
+            <div className="bookingForm__group bookingForm__group--hidden">
+              <input
+                ref={register}
+                type="text"
+                name="subtotal"
+                value={calculateSubtotal(
+                  calculateRoomPrice(data.bookedRooms),
+                  calculateDays(startDate, endDate)
+                )}
+              />
+            </div>
             <div className="bookingForm__group">
               <label
                 className="bookingForm__label"
@@ -144,7 +194,7 @@ const Booking = () => {
               <input
                 className="bookingForm__input bookingForm__input--phone"
                 id="bookingForm__input--phone"
-                type="number"
+                type="tel"
                 name="phone"
                 ref={register}
               />
@@ -161,7 +211,7 @@ const Booking = () => {
                 className="bookingForm__label"
                 htmlFor="bookingForm__input--textbox"
               >
-                Message
+                Message (Optional)
               </label>
               <textarea
                 className="bookingForm__textbox"
@@ -170,16 +220,13 @@ const Booking = () => {
                 type="text"
                 id="bookingForm__input--textbox"
               />
-              {errors.message && (
-                <span className="booking__error-message">
-                  {errors.message.message}
-                </span>
-              )}
             </div>
           </div>
 
           <div className="bookingForm__group">
-            <button className="bookingForm__submit">Submit</button>
+            <button type="submit" className="bookingForm__submit">
+              Submit
+            </button>
           </div>
         </fieldset>
       </form>
