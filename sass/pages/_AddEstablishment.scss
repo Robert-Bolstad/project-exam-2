@@ -1,0 +1,43 @@
+.AddEstablishment {
+  padding: $contentpadding / 2;
+  &__fieldset {
+    border: 0px;
+    padding: 0px;
+    margin: 0px;
+  }
+  &__group {
+    padding: $contentpadding / 2;
+    padding-bottom: 0px;
+  }
+  &__addfile-btn {
+    color: $white;
+    border: 0px;
+    background-color: $button;
+    padding: $contentpadding / 2;
+    margin-top: $contentpadding/2;
+  }
+  &__addfile {
+    display: none;
+  }
+  &__label {
+    font-family: $headline;
+  }
+  &__input {
+    width: 100%;
+    padding: $contentpadding/3;
+    border: 1px solid $gray;
+  }
+  &__textbox {
+    width: 100%;
+    height: 200px;
+    resize: none;
+  }
+  &__select {
+    width: 100%;
+    padding: $contentpadding/2;
+  }
+  &__error-message {
+    font-family: $subheadline;
+    font-size: 0.8em;
+  }
+}
