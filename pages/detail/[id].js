@@ -27,8 +27,8 @@ export default function Establishment({ establishment }) {
           <div className="establishment__image">
             <Image
               src={BASE_URL + establishment.image.url}
-              width="1000px"
-              height="667px"
+              width={establishment.image.width}
+              height={establishment.image.width}
               alt="image of establishment"
             />
           </div>
@@ -92,7 +92,7 @@ export default function Establishment({ establishment }) {
                 />
 
                 <p className="establishment__list-info">
-                  {establishment.contact.phone}
+                  {establishment.phone}
                 </p>
               </li>
               <li className="establishment__item">
@@ -104,7 +104,7 @@ export default function Establishment({ establishment }) {
                 />
 
                 <p className="establishment__list-info">
-                  {establishment.contact.email}
+                  {establishment.email}
                 </p>
               </li>
               <li className="establishment__item">
@@ -116,7 +116,7 @@ export default function Establishment({ establishment }) {
                 />
 
                 <p className="establishment__list-info">
-                  {establishment.contact.adress}
+                  {establishment.address}
                 </p>
               </li>
             </ul>
