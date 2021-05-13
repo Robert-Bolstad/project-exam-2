@@ -3,11 +3,12 @@ import { BASE_URL } from "../settings/api";
 const Card = ({ hotel }) => {
   return (
     <div className="card">
+      {console.log(hotel)}
       <div className="card__img">
         <Image
           src={BASE_URL + hotel.image.url}
-          width="100%"
-          height="250px"
+          width={hotel.image.width}
+          height={hotel.image.height}
           alt="hotel image"
         />
       </div>
