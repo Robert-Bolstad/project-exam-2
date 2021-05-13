@@ -1,11 +1,62 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
+import { useRouter } from "next/router";
 
 const SearchBox = (data) => {
+  const [searchValue, setSearchValue] = useState();
+  const [searcSelected, setSearchSelected] = useState(false);
+  const [hotelId, setHotelId] = useState(null);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
+  const [guests, setGuests] = useState(1);
   const [results, setResults] = useState([]);
+  const [searchData, setSearchData] = useState(null);
+
+  const router = useRouter();
+
+  const LOCAL_STORAGE_KEY = "booking-data";
+
+  useEffect(() => {
+    if (hotelId) {
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(searchData));
+      router.push(`/detail/${hotelId}`);
+    }
+  }, [searchData]);
+
+  useEffect(() => {
+    if (searcSelected === true) {
+      const list = document.querySelector(".searchbox__search-list");
+      list.style.display = "none";
+    } else {
+      const list = document.querySelector(".searchbox__search-list");
+      list.style.display = "block";
+    }
+  }, [searcSelected]);
+
+  const handleSelectedValue = (e, target) => {
+    e.preventDefault();
+    const key = target.value;
+    setSearchValue(target.innerText);
+    setSearchSelected(true);
+    setHotelId(key);
+  };
+
+  const handleGuests = (value) => {
+    switch (value) {
+      case 0:
+        setGuests(1);
+        break;
+      case "":
+        setGuests(1);
+        break;
+      default:
+        setGuests(value);
+    }
+    if (value > 50) {
+      setGuests(50);
+    }
+  };
 
   const search = (value) => {
     const filteredResults = data.data.filter((hotel) =>
@@ -16,6 +67,15 @@ const SearchBox = (data) => {
     } else {
       setResults(filteredResults);
     }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSearchData({
+      checkIn: startDate,
+      checkOut: endDate,
+      guests: guests,
+    });
   };
 
   return (
@@ -35,6 +95,7 @@ const SearchBox = (data) => {
             <input
               type="text"
               className="searchbox__input"
+              value={searchValue}
               placeholder="Enter name of hotel, B&amp;B or guesthouses"
               onChange={(e) => search(e.target.value)}
             />
@@ -42,7 +103,12 @@ const SearchBox = (data) => {
               {results.map((result) => {
                 return (
                   <li key={result.id} className="searchbox__search-result">
-                    {result.name}
+                    <button
+                      value={result.id}
+                      onClick={(e) => handleSelectedValue(e, e.target)}
+                    >
+                      {result.name}
+                    </button>
                   </li>
                 );
               })}
@@ -55,13 +121,7 @@ const SearchBox = (data) => {
                   selected={startDate}
                   onChange={(date) => setStartDate(date)}
                 />
-                <Image
-                  className="searchbox__icon"
-                  src="/check-inn.svg"
-                  width="30"
-                  height="30"
-                  alt="logo"
-                />
+                <Image src="/check-inn.svg" width="30" height="30" alt="logo" />
                 <div className="searchbox__input-btn">
                   <div className="searchbox__input-btn-text--top">
                     {startDate.toDateString().slice(0, 3)}
@@ -106,11 +166,22 @@ const SearchBox = (data) => {
                 />
                 <div className="searchbox__input-btn">
                   <div className="searchbox__input-btn-text--top">Guests</div>
-                  <div className="searchbox__input-btn-text--bottom">1</div>
+                  <input
+                    className="searchbox__input-number"
+                    type="number"
+                    name="guests"
+                    min="1"
+                    max="50"
+                    value={guests}
+                    onChange={(e) => handleGuests(e.target.value)}
+                  />
                 </div>
               </div>
             </div>
-            <button className="searchbox__submit">
+            <button
+              onClick={(e) => handleSubmit(e)}
+              className="searchbox__submit"
+            >
               <Image
                 className="searchbox__icon"
                 src="/search.svg"
