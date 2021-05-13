@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { BASE_URL } from "../settings/api";
+import Link from "next/link";
 const Establishments = ({ data }) => {
   console.log(data);
   function openEnquiry(element, id) {
@@ -13,7 +14,14 @@ const Establishments = ({ data }) => {
 
   return (
     <div className="Establishments">
-      <h1 className="Establishments__heading">Establishments</h1>
+      <div className="Establishments__top">
+        <h1 className="Establishments__heading">Establishments</h1>
+
+        <Link href="/addestablishment">
+          <a className="Establishments__link">+ Add New</a>
+        </Link>
+      </div>
+
       {data.map((data) => {
         return (
           <div key={data.id} className="Establishments__wrapper">
@@ -59,19 +67,19 @@ const Establishments = ({ data }) => {
                 <p className="Establishments__info">
                   Address:
                   <span className="Establishments__info-detail">
-                    {" " + data.contact.adress}
+                    {" " + data.address}
                   </span>
                 </p>
                 <p className="Establishments__info">
                   Email:
                   <span className="Establishments__info-detail">
-                    {" " + data.contact.email}
+                    {" " + data.email}
                   </span>
                 </p>
                 <p className="Establishments__info">
                   Phone:
                   <span className="Establishments__info-detail">
-                    {" " + data.contact.phone}
+                    {" " + data.phone}
                   </span>
                 </p>
               </div>
@@ -92,19 +100,19 @@ const Establishments = ({ data }) => {
                 <p className="Establishments__info">
                   Address:
                   <span className="Establishments__info-detail">
-                    {" " + data.contact.adress}
+                    {" " + data.address}
                   </span>
                 </p>
                 <p className="Establishments__info">
                   Email:
                   <span className="Establishments__info-detail">
-                    {" " + data.contact.email}
+                    {" " + data.email}
                   </span>
                 </p>
                 <p className="Establishments__info">
                   Phone:
                   <span className="Establishments__info-detail">
-                    {" " + data.contact.phone}
+                    {" " + data.phone}
                   </span>
                 </p>
               </div>
