@@ -1,0 +1,97 @@
+.AddAmenities {
+  padding: $contentpadding/2;
+  &__fieldset {
+    border: 0px;
+    padding: 0px;
+    margin: 0px;
+  }
+  &__heading {
+    color: $primary;
+    font-size: 1.3em;
+  }
+
+  &__description {
+    padding-top: $contentpadding/2;
+    padding-bottom: $contentpadding/2;
+  }
+
+  &__subheading {
+    font-family: $subheadline;
+    padding-top: $contentpadding / 2;
+  }
+
+  &__input {
+    width: 100%;
+    padding: $contentpadding/2;
+    margin-top: $contentpadding/2;
+    margin-bottom: $contentpadding/2;
+    border: 1px solid $gray;
+    border-radius: 5px;
+  }
+  &__add-btn {
+    padding: $contentpadding/2;
+    border: 0px;
+    border-radius: 5px;
+    color: $white;
+    background-color: $button;
+    margin-bottom: $contentpadding/2;
+    cursor: pointer;
+  }
+  &__item-wrapper {
+    display: flex;
+    align-items: center;
+  }
+  &__item {
+    font-family: $subheadline;
+    padding-left: 5px;
+  }
+  &__remove-btn {
+    border: 0px;
+    padding: 0px;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bolder;
+    color: $secondary;
+  }
+  &__submit {
+    display: none;
+  }
+  &__checkbox {
+    margin-left: auto;
+  }
+
+  &__error-message {
+    font-family: $subheadline;
+  }
+  &__error-message--asterisks {
+    color: $secondary;
+  }
+}
+
+.error-test {
+  display: none;
+}
+
+@media screen and (min-width: 800px) {
+  .AddAmenities {
+    &__wrapper-amenities {
+      display: flex;
+      padding: $contentpadding/2;
+      box-shadow: $bordershadow;
+      background-color: $light-gray;
+      border: 0px;
+      margin-top: $contentpadding/2;
+    }
+    &__group {
+      width: 33.3333%;
+      padding: $contentpadding/2;
+    }
+    &__item-wrapper {
+      padding: $contentpadding/2;
+    }
+    &__error-message {
+      padding: $contentpadding/2;
+    }
+  }
+}

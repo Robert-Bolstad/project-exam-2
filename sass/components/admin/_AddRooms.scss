@@ -1,0 +1,150 @@
+.AddRooms {
+  padding: $contentpadding/2;
+  &__heading {
+    font-size: 1.3em;
+    color: $primary;
+  }
+  &__fieldset {
+    border: 0px;
+    padding: 0px;
+    margin: 0px;
+  }
+  &__group {
+    padding-top: $contentpadding / 2;
+    padding-bottom: $contentpadding / 2;
+  }
+  &__description {
+    padding-top: $contentpadding/2;
+    padding-bottom: $contentpadding/2;
+  }
+
+  &__label {
+    font-family: $subheadline;
+    font-size: 0.9em;
+    margin-bottom: 6px;
+    display: block;
+  }
+  &__input {
+    width: 100%;
+    padding: $contentpadding/2;
+    box-shadow: $bordershadow;
+    background-color: $light-gray;
+    border: 0px;
+  }
+  &__textbox {
+    width: 100%;
+    padding: $contentpadding/2;
+    background-color: $light-gray;
+    border: 0.5px;
+    box-shadow: $bordershadow;
+    resize: none;
+    height: 200px;
+  }
+  &__select {
+    width: 100%;
+    padding: $contentpadding/2;
+    border: 1px solid $gray;
+    border-radius: 5px;
+  }
+
+  &__error-message {
+    font-family: $subheadline;
+  }
+  &__error-message--asterisks {
+    color: $secondary;
+  }
+
+  &__submit {
+    padding: $contentpadding / 2;
+    margin-top: $contentpadding;
+    color: $white;
+    border: 0px;
+    background-color: $button;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  &__list {
+    background-color: $light-gray;
+    border: 0px;
+    box-shadow: $bordershadow;
+
+    margin-top: $contentpadding;
+    margin-bottom: $contentpadding;
+  }
+  &__item {
+    font-family: $subheadline;
+    padding-top: $contentpadding;
+    padding-left: $contentpadding;
+    padding-right: $contentpadding;
+    padding-bottom: 0px;
+  }
+  &__item--name {
+    font-weight: bolder;
+  }
+  &__remove {
+    border: 0px;
+    border-radius: 5px;
+    margin: $contentpadding;
+    background-color: transparent;
+    padding: $contentpadding/2;
+    background-color: $button;
+    color: $white;
+    cursor: pointer;
+  }
+  &__submit-rooms {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .AddRooms {
+    padding: 0px;
+    &__heading {
+      padding: $contentpadding/2;
+    }
+    &__list {
+      margin: $contentpadding/2;
+      margin-top: $contentpadding;
+      margin-bottom: $contentpadding;
+    }
+    &__description {
+      padding: $contentpadding/2;
+      padding-top: 0px;
+    }
+    &__inputs-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    &__group {
+      width: 50%;
+      padding: $contentpadding/2;
+    }
+    &__group--textbox {
+      width: 100%;
+      padding: $contentpadding/2;
+      padding-bottom: $contentpadding;
+    }
+    &__group--name {
+      width: 100%;
+    }
+    &__group--featured {
+      width: 100%;
+      padding: $contentpadding/2;
+      padding-top: $contentpadding;
+    }
+    &__submit {
+      margin: 0px;
+      margin-left: $contentpadding/2;
+      border-radius: 5px;
+    }
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .AddRooms {
+    &__group {
+      width: 33.333%;
+      padding: $contentpadding/2;
+    }
+  }
+}

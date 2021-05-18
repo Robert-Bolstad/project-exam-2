@@ -1,0 +1,125 @@
+.EstablishmentDetails {
+  &__heading {
+    font-size: 1.5em;
+  }
+  &__fieldset {
+    border: 0px;
+    padding: 0px;
+    margin: 0px;
+  }
+  &__heading {
+    font-size: 1.3em;
+    padding: $contentpadding/2;
+    padding-top: $contentpadding;
+    color: $primary;
+    width: 100%;
+  }
+  &__group {
+    padding: $contentpadding / 2;
+  }
+  &__group--featured {
+    display: flex;
+    align-items: center;
+  }
+  &__label--featured {
+    margin-left: $contentpadding/2;
+    font-weight: bolder;
+  }
+
+  &__label {
+    font-family: $subheadline;
+    font-size: 0.9em;
+    margin-bottom: 6px;
+    display: block;
+  }
+  &__input {
+    width: 100%;
+    padding: $contentpadding/2;
+    box-shadow: $bordershadow;
+    background-color: $light-gray;
+    border: 0px;
+  }
+  &__textbox {
+    width: 100%;
+    padding: $contentpadding/2;
+    background-color: $light-gray;
+    border: 0px;
+    box-shadow: $bordershadow;
+    resize: none;
+    height: 200px;
+  }
+  &__select {
+    width: 100%;
+    padding: $contentpadding/2;
+    box-shadow: $bordershadow;
+    background-color: $light-gray;
+    border: 0px;
+  }
+
+  &__error-message {
+    font-family: $subheadline;
+  }
+  &__error-message--asterisks {
+    color: $secondary;
+  }
+  &__featured--btn {
+    border: 1px solid $button;
+    cursor: pointer;
+    border-radius: 5px;
+    align-items: center;
+  }
+  &__featured--icon {
+    padding-top: 4px;
+  }
+  &__featured {
+    display: none;
+  }
+
+  &__submit {
+    display: none;
+  }
+  &__link {
+    color: $link;
+    font-weight: bolder;
+  }
+
+  &__preview--image {
+    padding: $contentpadding/2;
+  }
+  &__input--image {
+    background-color: $button;
+    color: $white;
+    font-family: $subheadline;
+    cursor: pointer;
+  }
+  &__description {
+    padding: $contentpadding/2;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .EstablishmentDetails {
+    &__geometry-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    &__group--geometry {
+      width: 50%;
+    }
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .EstablishmentDetails {
+    &__inputs-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    &__group {
+      width: 50%;
+    }
+    &__group--textbox {
+      width: 100%;
+    }
+  }
+}
