@@ -1,5 +1,5 @@
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { BASE_URL } from "../settings/api";
@@ -13,6 +13,21 @@ const ResultMap = (props) => {
     zoom: 11,
   });
 
+  useEffect(() => {
+    window.onresize = doALoadOfStuff;
+    function doALoadOfStuff() {
+      console.log("resize");
+      setViewport({
+        ...viewport,
+        latitude: 60.391262,
+        longitude: 5.322054,
+        width: "100%",
+        height: "100%",
+        zoom: 11,
+      });
+    }
+  }, [viewport]);
+
   const [selectedMarker, setSelectedMarker] = useState(null);
   return (
     <div className="map">
@@ -25,7 +40,7 @@ const ResultMap = (props) => {
           setViewport(viewport);
         }}
       >
-        {props.props.results.map((establishment) => (
+        {props.props.map((establishment) => (
           <Marker
             key={establishment.id}
             latitude={establishment.geometry.latitude}
@@ -36,7 +51,6 @@ const ResultMap = (props) => {
               onClick={(e) => {
                 e.preventDefault();
                 setSelectedMarker(establishment);
-                console.log(selectedMarker);
               }}
             ></button>
           </Marker>
@@ -52,7 +66,7 @@ const ResultMap = (props) => {
             <div className="map__info">
               <div className="map__img">
                 <Image
-                  src={BASE_URL + selectedMarker.image.url}
+                  src={BASE_URL + selectedMarker.image[0].url}
                   width="auto"
                   height="80px"
                   alt="image of establishment"

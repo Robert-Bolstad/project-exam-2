@@ -1,5 +1,5 @@
 import ReactMapGL, { Marker } from "react-map-gl";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const ContactMap = (props) => {
   const [viewport, setViewport] = useState({
@@ -9,6 +9,21 @@ const ContactMap = (props) => {
     height: "100%",
     zoom: 10,
   });
+
+  useEffect(() => {
+    window.onresize = doALoadOfStuff;
+    function doALoadOfStuff() {
+      console.log("resize");
+      setViewport({
+        ...viewport,
+        latitude: props.lat,
+        longitude: props.long,
+        width: "100%",
+        height: "100%",
+        zoom: 10,
+      });
+    }
+  }, [viewport]);
 
   return (
     <div className={props.map}>
