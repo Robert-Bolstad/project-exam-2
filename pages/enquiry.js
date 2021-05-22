@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import BookingForm from "../components/BookingForm";
 import Link from "next/link";
 import BookingInfo from "../components/BookingInfo";
+import { useRouter } from "next/router";
 import {
   calculateDays,
   calculateRoomPrice,
@@ -13,19 +14,27 @@ import {
 
 const enquiry = () => {
   const [data, setData] = useState();
+  const [returnLink, setReturnLink] = useState("/detail");
+  const router = useRouter();
+
   useEffect(() => {
     const storageData = JSON.parse(localStorage.getItem("booked-data"));
     if (storageData) {
       setData(storageData);
+      const link = "/detail/" + storageData.hotelInfo.id;
+      setReturnLink(link);
+    } else {
+      router.push("/");
     }
   }, []);
+
   return (
     <Layout>
       <Head title="Enquiry" />
       <main className="enquiry">
         <div className="enquiry__top">
           <h1 className="enquiry__heading">Book Now</h1>
-          <Link href="/">
+          <Link href={returnLink}>
             <a className="enquiry__link">Go Back</a>
           </Link>
         </div>
