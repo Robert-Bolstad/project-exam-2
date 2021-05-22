@@ -14,21 +14,16 @@ export default function Establishment({ establishment }) {
       <main>
         <section className="establishment">
           <div className="establishment__intro">
-            <h1 className="establishment__heading">
-              {establishment.name}
-              <span className="establishment__heading--rating">
-                {" " + establishment.rating + "-star"}
-              </span>
-            </h1>
+            <h1 className="establishment__heading">{establishment.name}</h1>
             <p className="establishment__description">
               {establishment.description}
             </p>
           </div>
           <div className="establishment__image">
             <Image
-              src={BASE_URL + establishment.image.url}
-              width={establishment.image.width}
-              height={establishment.image.width}
+              src={BASE_URL + establishment.image[0].url}
+              width={establishment.image[0].width}
+              height={establishment.image[0].width}
               alt="image of establishment"
             />
           </div>
@@ -74,7 +69,13 @@ export default function Establishment({ establishment }) {
             <div className="establishment__price">${establishment.price}</div>
             <div className="establishment__price-text">per night</div>
           </div>
-          <button className="establishment__btn">Find Room</button>
+          <button
+            type="button"
+            onClick={() => document.getElementById("rooms").scrollIntoView()}
+            className="establishment__btn"
+          >
+            Find Room
+          </button>
           <div className="establishment__contact">
             <ContactMap
               map="establishment__map"
