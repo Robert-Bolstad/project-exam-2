@@ -19,6 +19,10 @@
   &__image {
     padding: $contentpadding/2;
   }
+  &__image > div {
+    padding: $contentpadding/2;
+    max-height: 400px;
+  }
   &__contact {
     width: 100%;
   }
@@ -62,6 +66,7 @@
     width: 100%;
     padding: $contentpadding / 2;
   }
+
   &__map-marker {
     width: 18px;
     height: 18px;
@@ -83,12 +88,15 @@
     }
     &__price-wrapper {
       order: 2;
+      padding-top: $contentpadding;
     }
     &__list--desktop {
       order: 3;
       width: 400px;
       display: flex;
       justify-content: space-between;
+      padding-bottom: 0px;
+      padding-top: $contentpadding;
     }
     &__item--desktop {
       padding-bottom: 0px;
@@ -100,11 +108,11 @@
     }
     &__image {
       order: 5;
-      width: 60%;
+      width: 52%;
     }
     &__contact {
       order: 6;
-      width: 40%;
+      width: 48%;
     }
   }
 }

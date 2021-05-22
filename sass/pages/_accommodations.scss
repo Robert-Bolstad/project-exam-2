@@ -3,7 +3,8 @@
   margin-left: auto;
   margin-right: auto;
   &__section--one {
-    background-color: $primary;
+    background-color: $dark-blue;
+    margin-top: $contentpadding;
     max-width: 1168px;
     margin-left: auto;
     margin-right: auto;

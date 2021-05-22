@@ -1,220 +1,214 @@
 .searchbox {
   background-image: url("../../public/hero-background.jpg");
-  background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
-  padding: $contentpadding;
-  &__wrapper {
+  background-position: center;
+  padding-top: $contentpadding * 2;
+  padding-bottom: $contentpadding * 2;
+
+  &__box {
+    padding: $contentpadding;
+    margin: $contentpadding/2;
+
+    padding: $contentpadding / 2;
+    background-color: $dark-blue;
+
     background: linear-gradient(
       93.19deg,
-      rgba(255, 255, 255, 0.48) 0%,
-      rgba(255, 255, 255, 0.12) 100%
+      #3d5e78 46.87%,
+      rgba(255, 255, 255, 0.2) 100%
     );
     backdrop-filter: blur(5px);
-    /* Note: backdrop-filter has minimal browser support */
-
-    border-radius: 15px;
-    text-align: center;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
+    border-radius: 5px;
   }
-  &__intro {
-    padding: $contentpadding;
-    padding-bottom: 0px;
+  &__subheadline {
+    padding-bottom: $contentpadding/2;
+    padding-top: $contentpadding/2;
   }
-  &__heading {
-    font-family: $headline;
-    font-weight: 400;
-  }
-  &__subline {
-    font-family: $subheadline;
-    padding-top: 0.5rem;
-    padding-bottom: $contentpadding;
-    margin: 0px;
-    font-size: 0.8em;
-  }
-  &__form {
-    font-family: $headline;
-  }
-
-  &__group-wrapper {
-    display: flex;
-    flex-wrap: wrap;
+  &__img {
+    position: absolute;
     padding: $contentpadding/2;
+    width: 45px;
+    margin-top: 3px;
+  }
+  &__results {
+    margin-top: $contentpadding/4;
+    position: absolute;
+    width: calc(100% - 32px);
+    z-index: 999;
+  }
+  &__result-btn {
+    width: 100%;
+    border: 0px;
+    padding: $contentpadding/2;
+    background-color: $white;
+    border: 1px solid $light-gray;
+    cursor: pointer;
+  }
+  &__result-btn:hover {
+    width: 100%;
+    border: 0px;
+    padding: $contentpadding/2;
+    background-color: $light-gray;
+    border: 1px solid $light-gray;
+  }
+  &__search-results {
+    width: 100%;
+  }
+
+  &__fieldset {
+    border: 0px;
+    padding: 0px;
+    margin: 0px;
   }
   &__group {
-    width: 50%;
-  }
-  &__input-wrapper {
-    width: 100%;
-    padding-left: $contentpadding;
-    padding-right: $contentpadding;
-    padding-bottom: $contentpadding/2;
+    padding: $contentpadding/2;
   }
   &__input {
-    width: 100%;
     padding: $contentpadding;
     padding-left: $contentpadding * 3;
-    padding-bottom: 22px;
-    padding-top: 22px;
-    border-radius: 15px;
+    border-radius: 5px;
     border: 0px;
-    box-shadow: $bordershadow;
-  }
-  &__icon--house {
-    position: absolute;
-    padding: $contentpadding / 2;
-    padding-left: $contentpadding / 2;
-    padding-top: 14px;
-  }
-  &__search-list {
-    background-color: $white;
-    position: absolute;
-    z-index: 99;
-    width: calc(100% - 32px);
-    border-radius: 15px;
-    margin-top: $contentpadding/2;
-    max-width: 468px;
-  }
-  &__search-result {
     width: 100%;
+    font-family: $subheadline;
   }
 
-  &__group-inner {
-    display: flex;
-    align-items: center;
-    background-color: $white;
-    justify-content: center;
-    padding: 8px;
-    border-radius: 15px;
-    box-shadow: $bordershadow;
-    margin: $contentpadding / 2;
+  &__search {
+    padding: $contentpadding;
+    padding-top: 17px;
+    padding-bottom: 17px;
   }
-  &__input-btn {
-    margin-left: 5px;
+  &__img--search {
+    margin-top: 5px;
   }
-
-  &__input-btn-text--top {
-    font-size: 0.8em;
-    color: $gray;
-  }
-  &__input-btn-text--bottom {
-    text-align: center;
-  }
-  &__input-number {
-    text-align: center;
-    width: 50%;
-    border: 0px;
-    font-family: $headline;
-    font-size: 1em;
-    text-align: right;
-  }
-
-  &__submit {
-    background-color: $button;
-    justify-content: center;
-    padding: 8px;
-    border-radius: 15px;
-    box-shadow: $bordershadow;
-    margin: $contentpadding / 2;
-    border: none;
-    display: flex;
-    align-items: center;
+  &__group-type {
+    font-size: 0.9em;
+    font-family: $subheadline;
     color: $white;
-    width: calc(50% - 1rem);
+    display: block;
+    margin-bottom: 2px;
+  }
+  &__info-top {
+    color: $white;
+    padding: $contentpadding / 2;
+  }
+  &__submit {
+    width: 100%;
+    padding: $contentpadding;
+    padding-top: 17px;
+    padding-bottom: 17px;
+    border: 0px;
+    color: $white;
+    background-color: $secondary;
+    border-radius: 5px;
+    cursor: pointer;
   }
 }
-.react-datepicker-wrapper {
-  position: absolute !important;
-  margin-right: 8px;
-  margin-left: 8px;
-}
 
-.react-datepicker-wrapper input {
-  padding: 16px !important;
-  border-radius: 15px !important;
-  border: 2px solid $white !important;
-  width: calc(100% - 16px) !important;
-  margin: 8px;
-  height: 59px;
-  opacity: 0;
-}
-
-.searchbox__checkout .react-datepicker-popper div {
-  max-width: 243px !important;
-}
-
-.searchbox__checkout .react-datepicker-popper {
-  left: -100px !important;
-}
-
-.searchbox__checkout .react-datepicker__triangle {
-  left: 192px !important;
-}
-
-@media screen and (min-width: 500px) {
+@media screen and (min-width: 400px) {
   .searchbox {
-    &__group-wrapper {
+    &__submit {
+      width: 50%;
+    }
+  }
+}
+
+@media screen and (min-width: 400px) {
+  .searchbox {
+    &__wrapper {
       display: flex;
-      max-width: 500px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    &__group {
-      width: 33.3333%;
-    }
-    &__input-wrapper {
-      max-width: 500px;
-      margin-left: auto;
-      margin-right: auto;
+      flex-wrap: wrap;
+      align-items: center;
     }
     &__submit {
-      width: 145.33px;
-      padding: $contentpadding;
+      width: 100%;
+    }
+    &__group {
+      width: 50%;
+    }
+    &__group--search {
+      width: 100%;
+    }
+    &__group--btn {
+      padding-top: 27px;
     }
   }
-  .searchbox .react-datepicker-wrapper input {
-    max-width: 145.33px !important;
+}
+
+@media screen and (min-width: 650px) {
+  .searchbox {
+    &__group {
+      width: 33.33333%;
+    }
+    &__group--search {
+      width: 66.66666%;
+      order: 1;
+    }
+    &__results {
+      width: calc(66.66666% - 27px);
+    }
+    &__group--btn {
+      order: 2;
+      padding-top: $contentpadding/2;
+    }
+    &__group--check-in {
+      order: 3;
+    }
+    &__group--check-out {
+      order: 4;
+    }
+    &__group--guests {
+      order: 5;
+    }
+  }
+}
+@media screen and (min-width: 850px) {
+  .searchbox {
+    &__group {
+      width: 25%;
+    }
+    &__group--search {
+      width: 100%;
+    }
+    &__group--btn {
+      padding-top: 27px;
+      order: 6;
+    }
+    &__group--search {
+      width: 75.1%;
+    }
+    &__results {
+      width: calc(75.1% - 29px);
+    }
   }
 }
 
 @media screen and (min-width: 1000px) {
   .searchbox {
-    &__intro {
-      text-align: left;
-    }
-    &__subline {
-      padding-bottom: 0px;
-    }
-
-    &__wrapper {
-      margin-top: 8rem;
-    }
-    &__form {
-      display: flex;
-      align-items: center;
-      padding-bottom: 2rem;
-      margin-bottom: 8rem;
-      margin-left: 0;
-      margin-right: 0;
-    }
-    &__input-wrapper {
-      width: 45%;
-      padding-right: 0px;
-      margin: 0px;
-      max-width: none;
-      padding-bottom: 0px;
+    &__box {
+      max-width: 1168px;
+      margin-left: auto;
+      margin-right: auto;
     }
     &__group {
-      width: 25%;
-      margin: 0px;
-    }
-    &__group-wrapper {
-      max-width: none;
-      width: 55%;
-    }
-    &__submit {
       width: 20%;
+    }
+    &__group--search {
+      width: 40%;
+      padding-top: 27px;
+    }
+    &__group--btn {
+      padding: $contentpadding/2;
+      width: 170px;
+    }
+    &__info-top {
+      padding-bottom: 0px;
+    }
+    &__subheadline {
+      padding-bottom: 0px;
+    }
+    &__results {
+      width: calc(40% - 23px);
     }
   }
 }

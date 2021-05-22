@@ -34,6 +34,7 @@
     align-content: center;
     background-color: $button;
     color: $white;
+    cursor: pointer;
   }
   &__btn-img {
     height: 20px;
@@ -88,13 +89,5 @@
   &__booking-rooms {
     font-size: 1em;
     margin-bottom: 0.5em;
-  }
-}
-
-@media screen and (min-width: 800px) {
-  .Establishments {
-    &__wrapper {
-      width: 50%;
-    }
   }
 }

@@ -48,6 +48,14 @@
     border-radius: 15px;
     cursor: pointer;
   }
+  &__success {
+    display: flex;
+    align-items: center;
+    padding: $contentpadding/2;
+  }
+  &__success-text {
+    padding-right: $contentpadding/2;
+  }
 
   &__check-img > div {
     padding-left: $contentpadding;

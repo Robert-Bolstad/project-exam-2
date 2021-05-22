@@ -4,16 +4,16 @@ $pagewidth: 1200px;
 //colours
 $black: #000000;
 $white: #ffffff;
-$primary: #2d717f;
-$secondary: #f17323;
+$dark-blue: #3d5e78;
+$primary: rgb(45, 113, 127);
+$secondary: #953a00;
 $button: #3d5e78;
-$link: #087f99;
+$link: #005c70;
 $gray: #545454;
 $light-gray: #f1f1f1;
 
 //box shadow
-$bordershadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-$bordershadowlight: 0.2px 0.2px 0 rgba(0, 0, 0, 0.2);
+$bordershadow: 0 2px 3px 0 rgba(0, 0, 0, 0.5);
 
 //fonts
 $headline: "Poppins", sans-serif;

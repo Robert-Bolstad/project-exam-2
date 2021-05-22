@@ -34,6 +34,9 @@
   }
   &__list--open {
     display: block;
+    position: absolute;
+    top: 63px;
+    z-index: 99;
   }
   &__btn {
     padding: $contentpadding;
@@ -61,5 +64,48 @@
   &__btn:hover {
     color: $white;
     background-color: $link;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .nav-admin {
+    &__list {
+      display: block;
+      width: auto;
+      display: flex;
+      position: static;
+      align-items: center;
+      margin-right: $contentpadding;
+      background-color: $primary;
+    }
+    &__item {
+      background-color: $primary;
+    }
+    &__burger {
+      display: none;
+    }
+    &__link {
+      background-color: $primary;
+      width: auto;
+      color: $primary;
+      padding: 0px;
+      margin: 0px;
+      margin: $contentpadding;
+      border-bottom: 1px solid $primary;
+      color: $white;
+    }
+    &__link:hover {
+      background-color: transparent;
+      border-bottom: 1px solid $white;
+    }
+    &__btn {
+      padding: $contentpadding / 2;
+      background-color: $secondary;
+      border: 0px;
+      font-size: 1em;
+      font-family: $subheadline;
+      border-radius: 5px;
+      color: $white;
+    }
   }
 }

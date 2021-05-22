@@ -6,16 +6,19 @@
   &__group {
     box-shadow: $bordershadow;
     margin: $contentpadding;
+    display: flex;
+    align-items: center;
   }
   &__icon {
-    display: flex;
     background-color: $secondary;
+    padding: $contentpadding/3;
+  }
+  &__icon > div:first-child {
     position: absolute;
-    padding: 6px;
+    top: 5px;
   }
   &__input {
     padding: $contentpadding;
-    padding-left: 3.3rem;
     border: 0px;
     width: 100%;
   }

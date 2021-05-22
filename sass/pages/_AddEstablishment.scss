@@ -1,43 +1,40 @@
 .AddEstablishment {
-  padding: $contentpadding / 2;
-  &__fieldset {
-    border: 0px;
-    padding: 0px;
-    margin: 0px;
+  &__heading {
+    font-size: 1.6em;
+    padding: $contentpadding/2;
+    padding-top: $contentpadding;
   }
-  &__group {
-    padding: $contentpadding / 2;
-    padding-bottom: 0px;
-  }
-  &__addfile-btn {
-    color: $white;
-    border: 0px;
-    background-color: $button;
-    padding: $contentpadding / 2;
-    margin-top: $contentpadding/2;
-  }
-  &__addfile {
-    display: none;
-  }
-  &__label {
-    font-family: $headline;
-  }
-  &__input {
-    width: 100%;
-    padding: $contentpadding/3;
-    border: 1px solid $gray;
-  }
-  &__textbox {
-    width: 100%;
-    height: 200px;
-    resize: none;
-  }
-  &__select {
-    width: 100%;
+  &__wrapper {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
     padding: $contentpadding/2;
   }
-  &__error-message {
-    font-family: $subheadline;
-    font-size: 0.8em;
+
+  &__btn-wrapper {
+    margin: $contentpadding/2;
+    margin-bottom: $contentpadding;
+  }
+  &__btn {
+    padding: $contentpadding;
+    border: 0px;
+    color: $white;
+    background-color: $primary;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+}
+@media screen and (min-width: 600px) {
+  .AddEstablishment {
+    background-color: $light-gray;
+    padding: $contentpadding * 2;
+    &__wrapper {
+      padding: $contentpadding * 2;
+      background-color: $white;
+      padding-top: $contentpadding;
+    }
+    &__btn-wrapper {
+      margin-top: $contentpadding * 2;
+    }
   }
 }

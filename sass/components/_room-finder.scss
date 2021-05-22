@@ -4,74 +4,71 @@
   margin-right: auto;
   &__heading {
     padding: $contentpadding;
-    padding-bottom: 0px;
+    padding-left: $contentpadding/2;
+    padding-bottom: $contentpadding/2;
+    padding-top: $contentpadding/2;
+
+    background-color: $dark-blue;
+    color: $white;
   }
   &__form {
     font-family: $headline;
-    max-width: 700px;
+    background-color: $dark-blue;
+    padding: $contentpadding/2;
+    width: 100%;
+    max-width: 1164px;
+    margin-left: auto;
+    margin-right: auto;
   }
-  &__group-wrapper {
-    display: flex;
-    flex-wrap: wrap;
+  &__fieldset {
+    border: 0px;
+    padding: 0px;
+    margin: 0px;
+  }
+
+  &__group {
     padding: $contentpadding/2;
   }
-  &__group {
-    width: 50%;
+
+  &__img {
+    position: absolute;
+    padding: $contentpadding/2;
+    width: 45px;
+    margin-top: 3px;
   }
-  &__input-wrapper {
+
+  &__input {
+    padding: $contentpadding;
+    padding-left: $contentpadding * 3;
+    border-radius: 5px;
+    border: 0px;
     width: 100%;
-    padding-left: $contentpadding;
-    padding-right: $contentpadding;
-    padding-bottom: $contentpadding/2;
+    font-family: $subheadline;
   }
 
-  &__group-inner {
-    display: flex;
-    align-items: center;
-    background-color: $light-gray;
-    justify-content: center;
-    padding: 8px;
-    border-radius: 15px;
-    box-shadow: $bordershadow;
-    margin: $contentpadding / 2;
-  }
-  &__input-btn {
-    margin-left: 5px;
-  }
-
-  &__input-btn-text--top {
-    font-size: 0.8em;
-    color: $gray;
-  }
-  &__input-btn-text--bottom {
-    text-align: center;
-  }
-  &__input-number {
-    width: 50px;
-  }
-
-  &__submit {
-    background-color: $button;
-    justify-content: center;
-    padding: 13px;
-    border-radius: 15px;
-    box-shadow: $bordershadow;
-    border: none;
-    display: flex;
-    align-items: center;
+  &__group-type {
+    font-size: 0.9em;
+    font-family: $subheadline;
     color: $white;
-    margin: $contentpadding/2;
-    width: calc(100% - 16px);
+    display: block;
+    margin-bottom: 2px;
   }
+
   &__result-text {
     padding: $contentpadding;
-    font-size: 0.8em;
+    padding-bottom: 0px;
     color: $gray;
+    width: 100%;
   }
   &__result {
     padding: $contentpadding;
     padding-top: 0px;
     max-width: 800px;
+  }
+  &__result-inner {
+    background-color: $light_gray;
+    margin-bottom: $contentpadding;
+    margin-top: $contentpadding;
   }
 
   &__room-info--icon {
@@ -81,8 +78,6 @@
   }
 
   &__card {
-    padding-top: $contentpadding;
-    padding-bottom: $contentpadding;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -96,12 +91,14 @@
   &__room-heading {
     order: 2;
     width: 50%;
+    padding: $contentpadding/2;
   }
   &__price-wrapper {
     display: flex;
     flex-direction: column;
     order: 3;
     width: 50%;
+    padding: $contentpadding/2;
   }
   &__room-info {
     order: 4;
@@ -112,16 +109,16 @@
     color: $gray;
     font-family: $subheadline;
     font-size: 0.8em;
+    padding: $contentpadding/2;
   }
   &__description {
     order: 5;
-    padding-top: $contentpadding / 2;
-    padding-bottom: $contentpadding/2;
+    padding: $contentpadding / 2;
   }
   &__quantity-wrapper {
     order: 6;
     color: $secondary;
-    padding-top: $contentpadding/2;
+    padding: $contentpadding/2;
     display: flex;
     flex-direction: column;
   }
@@ -142,10 +139,13 @@
   &__quantity {
     padding: $contentpadding / 4;
     border: 1px solid #6b6969;
-    border-radius: 15px;
+    border-radius: 5px;
     margin-top: $contentpadding / 2;
     margin-right: $contentpadding * 3;
     padding-left: $contentpadding;
+  }
+  &__book-btn-wrapper {
+    width: 100%;
   }
   &__book-btn {
     width: calc(100% - 16px);
@@ -165,6 +165,22 @@
     &__book-btn {
       width: 150px;
     }
+    &__group--guests {
+      width: 100px;
+    }
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .room-finder {
+    &__wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    &__group {
+      width: 33.33333%;
+    }
   }
 }
 
@@ -180,8 +196,7 @@
       display: inline-flex;
       order: 1;
       max-width: 40%;
-      padding: $contentpadding;
-      padding-left: 0px;
+      padding-right: $contentpadding/2;
     }
     &__image--mobile {
       display: none;
@@ -226,30 +241,10 @@
   }
 }
 
-.react-datepicker-wrapper {
-  position: absolute !important;
-  margin-right: 8px;
-  margin-left: 8px;
-}
-
-.react-datepicker-wrapper input {
-  padding: 16px !important;
-  border-radius: 15px !important;
-  border: 2px solid $white !important;
-  width: calc(100% - 16px) !important;
-  margin: 8px;
-  height: 59px;
-  opacity: 0;
-}
-
-.room-finder__group--checkout .react-datepicker-popper div {
-  max-width: 243px !important;
-}
-
-.room-finder__group--checkout .react-datepicker-popper {
-  left: -100px !important;
-}
-
-.room-finder__group--checkout .react-datepicker__triangle {
-  left: 192px !important;
+@media screen and (min-width: 900px) {
+  .room-finder {
+    &__group--guests {
+      max-width: 110px;
+    }
+  }
 }
