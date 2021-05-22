@@ -6,11 +6,40 @@ import Footer from "../components/Footer";
 import { BASE_URL } from "../settings/api";
 import axios from "axios";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
-import { useState } from "react";
 import ResultMap from "../components/ResultMap";
 import FilterList from "../components/FilterList";
+import { useEffect, useState } from "react";
 
-export default function Accommodations(props) {
+export default function Accommodations({ results }) {
+  const [listResults, setListResults] = useState(results);
+
+  useEffect(() => {}, [listResults]);
+
+  const filterResults = (data) => {
+    if (data.price !== "" && data.accommodations !== "all") {
+      const filteredResults = results.filter(
+        (result) =>
+          result.price <= data.price && result.category === data.accommodations
+      );
+      setListResults(filteredResults);
+    }
+    if (data.price !== "" && data.accommodations === "all") {
+      const filteredResults = results.filter(
+        (result) => result.price <= data.price
+      );
+      setListResults(filteredResults);
+    }
+    if (data.price == "" && data.accommodations !== "all") {
+      const filteredResults = results.filter(
+        (result) => result.category === data.accommodations
+      );
+      setListResults(filteredResults);
+    }
+    if (data.price == "" && data.accommodations === "all") {
+      setListResults(results);
+    }
+  };
+
   function toggleMap() {
     const map = document.querySelector(".map");
     const overlay = document.querySelector(".map__overlay");
@@ -24,14 +53,14 @@ export default function Accommodations(props) {
       <main className="accommodations">
         <section className="accommodations__section accommodations__section--one">
           <h1 className="accommodations__heading">Accomodations in bergen</h1>
-          <FilterList />
+          <FilterList filterResults={filterResults} />
         </section>
         <section className="accommodations__section accommodations__section--two">
           <div className="accommodations__result-info">
             <h3 className="accommodations__results-heading">
               Your Results(
               <span className="accommodations__results-number">
-                {props.results.length}
+                {listResults.length}
               </span>
               )
             </h3>
@@ -47,12 +76,12 @@ export default function Accommodations(props) {
           </div>
           <div className="accommodations__result">
             <div className="accommodations__card-wrapper">
-              {props.results.map((card) => {
+              {listResults.map((card) => {
                 return (
                   <div className="accommodation-card" key={card.id}>
                     <div className="accommodation-card__img">
                       <Image
-                        src={BASE_URL + card.image.url}
+                        src={BASE_URL + card.image[0].url}
                         width="auto"
                         height="auto"
                         alt="image of establishment"
@@ -91,7 +120,7 @@ export default function Accommodations(props) {
               })}
             </div>
 
-            <ResultMap props={props} />
+            <ResultMap props={listResults} />
             <div className="map__overlay">
               <button className="map__close" onClick={toggleMap}>
                 &times;
