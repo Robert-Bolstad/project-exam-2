@@ -4,9 +4,9 @@ import { useContext } from "react";
 import AuthContext from "../context/AuthContext";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import Messages from "../components/Messages";
-import Enquiries from "../components/Enquiries";
-import Establishments from "../components/Establishments";
+import Messages from "../components/admin/Messages";
+import Enquiries from "../components/admin/Enquiries";
+import Establishments from "../components/admin/Establishments";
 import { BASE_URL } from "../settings/api";
 import axios from "axios";
 
