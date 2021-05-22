@@ -1,53 +1,37 @@
 import Image from "next/image";
 import { BASE_URL } from "../settings/api";
 import { useState, useEffect } from "react";
-import DatePicker from "react-datepicker";
 import { useRouter } from "next/router";
-import { setLocale } from "yup";
 
 const RoomFinder = ({ data }) => {
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
-  const [guests, setGuests] = useState(1);
-  const [order, setOrder] = useState();
+  const dateToday = new Date().toISOString();
+  let tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  const dateTomorrow = new Date(tomorrow).toISOString();
   const [rooms, setRooms] = useState(data.rooms);
-  const [selectedRooms, setSelectedRooms] = useState();
+  const [inputValue, setInputValue] = useState({
+    checkIn: dateToday.slice(0, 10),
+    checkOut: dateTomorrow.slice(0, 10),
+    guests: 1,
+  });
 
   const router = useRouter();
 
   let bookedRooms = [];
 
   useEffect(() => {
-    const storageData = JSON.parse(localStorage.getItem("booking-data"));
-    if (storageData) {
-      setStartDate(new Date(storageData.checkIn));
-      setEndDate(new Date(storageData.checkOut));
-      setGuests(storageData.guests);
+    const storageData = JSON.parse(localStorage.getItem("booking-details"));
+    if (storageData && storageData.id == data.id) {
+      const checkIn = new Date(storageData.checkIn).toISOString();
+      const checkOut = new Date(storageData.checkOut).toISOString();
+      setInputValue({
+        ...inputValue,
+        checkOut: checkOut.slice(0, 10),
+        checkIn: checkIn.slice(0, 10),
+        guests: storageData.guests,
+      });
     }
   }, []);
-
-  useEffect(() => {
-    if (order) {
-      localStorage.setItem("booked-data", JSON.stringify(order));
-      router.push("/enquiry");
-    }
-  }, [order]);
-
-  const handleGuests = (value) => {
-    switch (value) {
-      case 0:
-        setGuests(1);
-        break;
-      case "":
-        setGuests(1);
-        break;
-      default:
-        setGuests(value);
-    }
-    if (value > 50) {
-      setGuests(50);
-    }
-  };
 
   const handleRooms = (e) => {
     e.preventDefault();
@@ -83,113 +67,157 @@ const RoomFinder = ({ data }) => {
     }
   };
 
-  const handleBooking = (e) => {
-    e.preventDefault();
-    setOrder({
-      hotelInfo: data,
-      checkIn: startDate,
-      checkOut: endDate,
-      guests: parseInt(guests),
-      bookedRooms: bookedRooms,
-    });
+  const handleBooking = () => {
+    if (bookedRooms.length > 0) {
+      localStorage.setItem(
+        "booked-data",
+        JSON.stringify({
+          hotelInfo: data,
+          checkIn: inputValue.checkIn,
+          checkOut: inputValue.checkOut,
+          guests: inputValue.guests,
+          bookedRooms: bookedRooms,
+        })
+      );
+      router.push("/enquiry");
+    } else {
+      alert("You need to select a room first");
+    }
+  };
+
+  const updateFutureDate = (date) => {
+    if (date >= inputValue.checkOut) {
+      let newDate = new Date(date);
+      newDate.setDate(newDate.getDate() + 1);
+      const nextDay = new Date(newDate).toISOString();
+      setInputValue({
+        ...inputValue,
+        checkOut: nextDay.slice(0, 10),
+        checkIn: date.slice(0, 10),
+      });
+    }
+  };
+
+  const updatePastDate = (date) => {
+    if (date <= inputValue.checkIn) {
+      let newDate = new Date(date);
+      newDate.setDate(newDate.getDate() - 1);
+      const pastDay = new Date(newDate).toISOString();
+      setInputValue({
+        ...inputValue,
+        checkOut: date.slice(0, 10),
+        checkIn: pastDay.slice(0, 10),
+      });
+    }
+  };
+
+  const handleInputChange = (e) => {
+    switch (e.target.name) {
+      // case "search":
+      //   setInputValue({ ...inputValue, name: e.target.value });
+      //   break;
+      case "checkIn":
+        if (e.target.value <= dateToday) {
+          setInputValue({ ...inputValue, checkIn: dateToday.slice(0, 10) });
+        } else {
+          setInputValue({ ...inputValue, checkIn: e.target.value });
+          updateFutureDate(e.target.value);
+        }
+
+        break;
+      case "checkOut":
+        if (e.target.value <= dateTomorrow) {
+          setInputValue({
+            ...inputValue,
+            checkOut: dateTomorrow.slice(0, 10),
+            checkIn: dateToday.slice(0, 10),
+          });
+        } else {
+          setInputValue({ ...inputValue, checkOut: e.target.value });
+          updatePastDate(e.target.value);
+        }
+
+        break;
+      case "guests":
+        setInputValue({ ...inputValue, guests: e.target.value });
+
+        break;
+    }
   };
 
   return (
-    <section className="room-finder">
-      <h3 className="room-finder__heading">Find Available Rooms</h3>
+    <section className="room-finder" id="rooms">
       <div className="room-finder__wrapper">
         <form className="room-finder__form">
-          <div className="room-finder__group-wrapper">
-            <div className="room-finder__group room-finder__group--checkinn">
-              <div className="room-finder__group-inner">
-                <DatePicker
-                  selected={startDate}
-                  onChange={(date) => setStartDate(date)}
-                />
-                <Image
-                  className="room-finder__icon"
-                  src="/check-inn.svg"
-                  width="33"
-                  height="33"
-                  alt="logo"
-                />
-                <div className="room-finder__input-btn">
-                  <div className="room-finder__input-btn-text--top">
-                    {startDate.toDateString().slice(0, 3)}
-                  </div>
-                  <div className="room-finder__input-btn-text--bottom">
-                    {startDate.toDateString().slice(4, 10)}
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="room-finder__group room-finder__group--checkout">
-              <div className="room-finder__group-inner">
-                <DatePicker
-                  selected={endDate}
-                  onChange={(date) => setEndDate(date)}
-                />
-                <Image
-                  className="room-finder__icon"
-                  src="/check-out.svg"
-                  width="33"
-                  height="33"
-                  alt="logo"
-                />
-                <div className="room-finder__input-btn">
-                  <div className="room-finder__input-btn-text--top">
-                    {endDate.toDateString().slice(0, 3)}
-                  </div>
-                  <div className="room-finder__input-btn-text--bottom">
-                    {endDate.toDateString().slice(4, 10)}
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="room-finder__group">
-              <div className="room-finder__group-inner">
-                <Image
-                  className="room-finder__icon"
-                  src="/user.svg"
-                  width="33"
-                  height="33"
-                  alt="logo"
-                />
-                <div className="room-finder__input-btn">
-                  <div className="room-finder__input-btn-text--top">Guests</div>
+          <h3 className="room-finder__heading">Your booking data</h3>
+          <fieldset className="room-finder__fieldset">
+            <div className="room-finder__wrapper">
+              <div className="room-finder__group room-finder__group--check-in">
+                <span className="room-finder__group-type">Check In</span>
+                <div>
+                  <img
+                    className="room-finder__img"
+                    src="/check-In.svg"
+                    alt="icon"
+                  />
                   <input
-                    onChange={(e) => handleGuests(e.target.value)}
+                    className="room-finder__check-in room-finder__input"
+                    type="date"
+                    name="checkIn"
+                    value={inputValue.checkIn}
+                    onChange={(e) => handleInputChange(e)}
+                  />
+                </div>
+              </div>
+              <div className="room-finder__group room-finder__group--check-out">
+                <span className="room-finder__group-type">Check Out</span>
+                <div className="room-finder__input-wrapper">
+                  <img
+                    className="room-finder__img"
+                    src="/check-out.svg"
+                    alt="icon"
+                  />
+                  <input
+                    name="checkOut"
+                    className="room-finder__check-out room-finder__input"
+                    type="date"
+                    value={inputValue.checkOut}
+                    onChange={(e) => handleInputChange(e)}
+                  />
+                </div>
+              </div>
+              <div className="room-finder__group room-finder__group--guests">
+                <span className="room-finder__group-type">Guests</span>
+                <div className="room-finder__input-wrapper">
+                  <img
+                    className="room-finder__img"
+                    src="/user.svg"
+                    alt="icon"
+                  />
+                  <input
+                    className="room-finder__input"
                     type="number"
-                    value={guests}
-                    className="room-finder__input-number room-finder__input-btn-text--bottom"
-                  ></input>
+                    name="guests"
+                    min="1"
+                    max="50"
+                    value={inputValue.guests}
+                    onChange={(e) => handleInputChange(e)}
+                    placeholder="1"
+                  />
                 </div>
               </div>
             </div>
-            <div className="room-finder__group">
-              <button className="room-finder__submit">
-                <Image
-                  className="room-finder__icon"
-                  src="/search.svg"
-                  width="33"
-                  height="33"
-                  alt="logo"
-                />
-                Find Rooms
-              </button>
-            </div>
-          </div>
+          </fieldset>
         </form>
-        <p className="room-finder__result-text">
-          Available Rooms from you search
-        </p>
+        <p className="room-finder__result-text">Rooms Available</p>
+
         <div className="room-finder__result">
           {data.rooms.map((room) => {
             return (
-              <div className="room-finder__result-inner">
+              <div key={Math.random()} className="room-finder__result-inner">
                 <div className="room-finder__image room-finder__image--desktop">
                   <Image
-                    src={BASE_URL + room.url}
+                    src={BASE_URL + data.image[0].url}
                     width="1000px"
                     height="666px"
                     alt="logo"
@@ -202,7 +230,7 @@ const RoomFinder = ({ data }) => {
                 >
                   <div className="room-finder__image room-finder__image--mobile">
                     <Image
-                      src={BASE_URL + room.url}
+                      src={BASE_URL + data.image[0].url}
                       width="1000px"
                       height="666px"
                       alt="logo"
@@ -228,7 +256,6 @@ const RoomFinder = ({ data }) => {
                     <span className="room-finder__price">
                       {"$" + room.price}
                     </span>
-                    <span className="room-finder__price-info">per night</span>
                   </div>
 
                   <p className="room-finder__description">{room.description}</p>
@@ -264,12 +291,15 @@ const RoomFinder = ({ data }) => {
             );
           })}
         </div>
-        <button
-          onClick={(e) => handleBooking(e)}
-          className="room-finder__book-btn"
-        >
-          Book Now
-        </button>
+        <div className="room-finder__book-btn-wrapper">
+          <button
+            type="button"
+            onClick={() => handleBooking()}
+            className="room-finder__book-btn"
+          >
+            Book Now
+          </button>
+        </div>
       </div>
     </section>
   );
