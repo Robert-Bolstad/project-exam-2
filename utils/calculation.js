@@ -9,8 +9,10 @@ export const calculateRoomPrice = (rooms) => {
 
   rooms.forEach((room) => {
     const price = room.room.price;
+    const quantity = Number(room.quantity);
+    const sumRooms = price * quantity;
 
-    sum += price;
+    sum += sumRooms;
   });
 
   return sum;
