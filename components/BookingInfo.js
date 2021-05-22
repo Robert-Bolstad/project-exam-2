@@ -6,8 +6,6 @@ const BookingInfo = ({
   calculateDays,
   calculateSubtotal,
 }) => {
-  console.log(data);
-
   const startDate = new Date(data.checkIn);
   const endDate = new Date(data.checkOut);
 
@@ -16,9 +14,9 @@ const BookingInfo = ({
       <div className="bookingInfo__img">
         <Image
           className="room-finder__icon"
-          src={BASE_URL + data.hotelInfo.image.url}
-          width={data.hotelInfo.image.width}
-          height={data.hotelInfo.image.height}
+          src={BASE_URL + data.hotelInfo.image[0].url}
+          width={data.hotelInfo.image[0].width}
+          height={data.hotelInfo.image[0].height}
           alt="hotel image"
         />
       </div>

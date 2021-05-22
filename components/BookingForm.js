@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import { BASE_URL } from "../settings/api";
 import Image from "next/image";
-import { schema } from "../utils/schemaVaidator";
+import { schema } from "../utils/schemaValidators/enquiryForm";
 
 const Booking = ({
   data,
@@ -34,8 +34,8 @@ const Booking = ({
   function successHtml() {
     return (
       <>
-        <p>Message sendt</p>
-        <div className="contact-form__check-img">
+        <p className="bookingForm__success-text">Booking received</p>
+        <div>
           <Image src="/check.svg" width="12" height="12" alt="check icon" />
         </div>
       </>
@@ -49,17 +49,17 @@ const Booking = ({
   const onSubmit = async (data) => {
     const rooms = getRooms();
     const post = Object.assign(data, rooms);
+    console.log(post);
 
     setSubmitting(true);
 
     try {
       const response = await axios.post(BASE_URL + "/enquiries", post);
-      console.log(response);
     } catch (error) {
       console.log("error", error);
     } finally {
-      setSubmitting(false);
       setSuccess(successHtml());
+      localStorage.removeItem("booked-data");
     }
   };
   return (
@@ -74,7 +74,7 @@ const Booking = ({
                 ref={register}
                 type="text"
                 name="hotel"
-                value={data.hotelInfo.name}
+                defaultValue={data.hotelInfo.name}
               />
             </div>
             <div className="bookingForm__group bookingForm__group--hidden">
@@ -82,7 +82,7 @@ const Booking = ({
                 ref={register}
                 type="number"
                 name="guests"
-                value={data.guests}
+                defaultValue={data.guests}
               />
             </div>
             <div className="bookingForm__group bookingForm__group--hidden">
@@ -90,7 +90,7 @@ const Booking = ({
                 ref={register}
                 type="text"
                 name="checkIn"
-                value={startDate.toISOString()}
+                defaultValue={startDate.toISOString()}
               />
             </div>
             <div className="bookingForm__group bookingForm__group--hidden">
@@ -98,7 +98,7 @@ const Booking = ({
                 ref={register}
                 type="text"
                 name="checkOut"
-                value={endDate.toISOString()}
+                defaultValue={endDate.toISOString()}
               />
             </div>
             <div className="bookingForm__group bookingForm__group--hidden">
@@ -106,7 +106,7 @@ const Booking = ({
                 ref={register}
                 type="text"
                 name="checkOut"
-                value={endDate.toISOString()}
+                defaultValue={endDate.toISOString()}
               />
             </div>
 
@@ -115,7 +115,7 @@ const Booking = ({
                 ref={register}
                 type="text"
                 name="subtotal"
-                value={calculateSubtotal(
+                defaultValue={calculateSubtotal(
                   calculateRoomPrice(data.bookedRooms),
                   calculateDays(startDate, endDate)
                 )}
@@ -224,8 +224,13 @@ const Booking = ({
           </div>
 
           <div className="bookingForm__group">
-            <button type="submit" className="bookingForm__submit">
-              Submit
+            <button
+              type="submit"
+              disabled={submitting}
+              className="bookingForm__submit"
+              style={submitting ? { opacity: "0.7" } : null}
+            >
+              {submitting ? "Submitted" : "Submit"}
             </button>
           </div>
         </fieldset>
