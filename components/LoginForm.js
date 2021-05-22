@@ -52,9 +52,9 @@ const LoginForm = () => {
           <div className="login-form__icon">
             <Image
               src="/login-user.svg"
-              width="30"
-              height="35"
-              alt="hotel icon"
+              width="40"
+              height="40"
+              alt="user icon"
             />
           </div>
           <input
@@ -70,7 +70,7 @@ const LoginForm = () => {
         )}
         <div className="login-form__group">
           <div className="login-form__icon">
-            <Image src="/lock.svg" width="30" height="35" alt="hotel icon" />
+            <Image src="/lock.svg" width="40" height="40" alt="lock icon" />
           </div>
           <input
             className="login-form__input"
