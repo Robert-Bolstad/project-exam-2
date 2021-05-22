@@ -1,5 +1,6 @@
 import "../sass/main.scss";
 import "react-datepicker/dist/react-datepicker.css";
+import "mapbox-gl/dist/mapbox-gl.css";
 
 import { AuthProvider } from "../context/AuthContext";
 import { EnquiryProvider } from "../context/EnquiryContext";
