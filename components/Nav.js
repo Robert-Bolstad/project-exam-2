@@ -12,7 +12,10 @@ const Nav = () => {
       case "/admin":
         setAdmin(true);
         break;
-      case "/addestablishment":
+      case "/addEstablishment":
+        setAdmin(true);
+        break;
+      case "/edit/[id]":
         setAdmin(true);
         break;
       default:
@@ -94,10 +97,16 @@ const Nav = () => {
           </button>
           <ul className="nav-admin__list">
             <li className="nav-admin__item">
+              <Link href="/admin">
+                <a className="nav-admin__link">Admin</a>
+              </Link>
+            </li>
+            <li className="nav-admin__item">
               <Link href="/">
                 <a className="nav-admin__link">Visit website</a>
               </Link>
             </li>
+
             <li className="nav-admin__item">
               <button className="nav-admin__btn">Logout</button>
             </li>
