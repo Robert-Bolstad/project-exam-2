@@ -1,5 +1,42 @@
-import Image from "next/image";
-const FilterList = () => {
+import { useState, useEffect } from "react";
+
+const FilterList = ({ filterResults }) => {
+  const [filterData, setFilterData] = useState();
+  const [inputValue, setInputValue] = useState({
+    price: "",
+    accommodations: "all",
+  });
+
+  useEffect(() => {
+    const storageData = JSON.parse(
+      localStorage.getItem("filter-accommodations")
+    );
+    if (storageData) {
+      setFilterData({ ...filterData, price: 0, accommodations: storageData });
+      setInputValue({ ...inputValue, accommodations: storageData });
+    }
+  }, []);
+
+  useEffect(() => {
+    if (filterData) {
+      filterResults(filterData);
+      localStorage.removeItem("filter-accommodations");
+      setFilterData(null);
+    }
+  }, [filterData]);
+
+  function handleInputChange(e) {
+    switch (e.target.name) {
+      case "price":
+        setInputValue({ ...inputValue, price: e.target.value });
+        break;
+      case "category":
+        setInputValue({ ...inputValue, accommodations: e.target.value });
+        break;
+      default:
+    }
+  }
+
   return (
     <form className="filter-list">
       <div className="filter-list__group-wrapper">
@@ -8,9 +45,13 @@ const FilterList = () => {
             Max Price
           </label>
           <input
+            name="price"
+            min="0"
             className="filter-list__input"
-            placeholder="0$"
             type="number"
+            placeholder="0"
+            value={inputValue.price}
+            onChange={handleInputChange}
           />
         </div>
       </div>
@@ -20,14 +61,20 @@ const FilterList = () => {
           <label className="filter-list__label" htmlFor="filter-list__type">
             Accommodation
           </label>
-          <select className="filter-list__type" name="type" type="text">
+          <select
+            className="filter-list__type"
+            name="category"
+            type="text"
+            value={inputValue.accommodations}
+            onChange={handleInputChange}
+          >
             <option className="filter-list__option" value="all">
               All
             </option>
             <option className="filter-list__option" value="hotel">
               Hotels
             </option>
-            <option className="filter-list__option" value="bb">
+            <option className="filter-list__option" value="bed_and_breakfast">
               B&#38;Bs
             </option>
             <option className="filter-list__option" value="guesthouse">
@@ -38,8 +85,12 @@ const FilterList = () => {
       </div>
 
       <div className="filter-list__group-wrapper">
-        <button className="filter-list__search">
-          <Image src="/search.svg" width="33" height="33" alt="hotel icon" />
+        <button
+          type="button"
+          className="filter-list__search"
+          onClick={() => filterResults(inputValue)}
+        >
+          <img src="/search.svg" width="33" height="33" alt="hotel icon" />
           Search
         </button>
       </div>
