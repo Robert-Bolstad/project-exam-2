@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 import ContactForm from "../components/ContactForm";
 import ContactInfo from "../components/ContactInfo";
 import ReactMapGL, { Marker } from "react-map-gl";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const contact = () => {
   const [viewport, setViewport] = useState({
@@ -14,6 +14,22 @@ const contact = () => {
     height: "100%",
     zoom: 11,
   });
+
+  useEffect(() => {
+    window.onresize = doALoadOfStuff;
+    function doALoadOfStuff() {
+      console.log("resize");
+      setViewport({
+        ...viewport,
+        latitude: 60.392494,
+        longitude: 5.325134,
+        width: "100%",
+        height: "100%",
+        zoom: 10,
+      });
+    }
+  }, [viewport]);
+
   return (
     <Layout>
       <Head title="Contact" />
