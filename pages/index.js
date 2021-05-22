@@ -1,15 +1,15 @@
 import Head from "../components/layout/Head";
 import Layout from "../components/layout/Layout";
-import Link from "next/link";
 import Image from "next/image";
 import Card from "../components/Card";
-import Newsletter from "../components/Newsletter";
 import Footer from "../components/Footer";
 import SearchBox from "../components/SearchBox";
 import { BASE_URL } from "../settings/api";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 export default function Home({ results }) {
+  const router = useRouter();
   const featuredHotels = () => {
     const hotels = results.filter((hotel) => hotel.category === "hotel");
     const featured = hotels.filter((featured) => featured.featured === true);
@@ -27,12 +27,32 @@ export default function Home({ results }) {
     const featured = houses.filter((featured) => featured.featured === true);
     return featured;
   };
+  const getLength = (type) => {
+    const filter = results.filter((hotel) => hotel.category === type);
+    return filter.length;
+  };
+  const pageFilter = (filter) => {
+    localStorage.setItem("filter-accommodations", JSON.stringify(filter));
+    router.push("/accommodations");
+  };
 
   return (
     <Layout>
       <Head title="Home" />
       <main>
-        <SearchBox data={results} />
+        <section className="searchbox">
+          <div className="searchbox__box">
+            <div className="searchbox__info-top">
+              <h1 className="searchbox__heading">
+                Search Accommodations in Bergen
+              </h1>
+              <p className="searchbox__subheadline">
+                Find hotels, B&#38;B and guesthouses in Bergen
+              </p>
+            </div>
+            <SearchBox data={results} />
+          </div>
+        </section>
         <section className="featured">
           <h2 className="featured__heading">Popular Accommodations</h2>
 
@@ -46,15 +66,19 @@ export default function Home({ results }) {
                 return <Card key={hotel.id} hotel={hotel} />;
               })}
             </div>
-            <Link href="/">
-              <a className="featured__link">
-                See all(
+            <div className="featured__link-wrapper">
+              <button
+                type="button"
+                onClick={() => pageFilter("hotel")}
+                className="featured__link"
+              >
+                View all (
                 <span className="featured__link--number">
-                  {featuredHotels().length}
+                  {getLength("hotel")}
                 </span>
                 )
-              </a>
-            </Link>
+              </button>
+            </div>
           </div>
 
           <div className="featured__b-bs">
@@ -67,15 +91,19 @@ export default function Home({ results }) {
                 return <Card key={hotel.id} hotel={hotel} />;
               })}
             </div>
-            <Link href="/">
-              <a className="featured__link">
-                See all(
+            <div className="featured__link-wrapper">
+              <button
+                type="button"
+                onClick={() => pageFilter("bed_and_breakfast")}
+                className="featured__link"
+              >
+                View all (
                 <span className="featured__link--number">
-                  {featuredBB().length}
+                  {getLength("hotel")}
                 </span>
                 )
-              </a>
-            </Link>
+              </button>
+            </div>
           </div>
 
           <div className="featured__guesthouses">
@@ -93,18 +121,21 @@ export default function Home({ results }) {
                 return <Card key={hotel.id} hotel={hotel} />;
               })}
             </div>
-            <Link href="/">
-              <a className="featured__link">
-                See all(
+            <div className="featured__link-wrapper">
+              <button
+                type="button"
+                onClick={() => pageFilter("guesthouse")}
+                className="featured__link"
+              >
+                View all (
                 <span className="featured__link--number">
-                  {featuredGuestHouses().length}
+                  {getLength("hotel")}
                 </span>
                 )
-              </a>
-            </Link>
+              </button>
+            </div>
           </div>
         </section>
-        <Newsletter />
       </main>
       <Footer />
     </Layout>
