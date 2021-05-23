@@ -217,10 +217,10 @@ const RoomFinder = ({ data }) => {
               <div key={Math.random()} className="room-finder__result-inner">
                 <div className="room-finder__image room-finder__image--desktop">
                   <Image
-                    src={BASE_URL + data.image[0].url}
+                    src={data.image[0].url}
                     width="1000px"
                     height="666px"
-                    alt="logo"
+                    alt="image of room"
                   />
                 </div>
                 <div
@@ -230,7 +230,7 @@ const RoomFinder = ({ data }) => {
                 >
                   <div className="room-finder__image room-finder__image--mobile">
                     <Image
-                      src={BASE_URL + data.image[0].url}
+                      src={data.image[0].url}
                       width="1000px"
                       height="666px"
                       alt="logo"
