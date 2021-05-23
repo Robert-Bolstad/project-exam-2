@@ -29,8 +29,8 @@ const Messages = ({ data }) => {
   }
   return (
     <>
+      <h1 className="Messages__heading">Lastest Messages</h1>
       <div className="Messages">
-        <h1 className="Messages__heading">Lastest Messages</h1>
         {data.map((data) => {
           return (
             <div key={data.id} className="Messages__wrapper">
