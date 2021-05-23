@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function AmenitiesForm({ addItem, placeholderText }) {
   const [item, setItem] = useState({
