@@ -10,6 +10,7 @@ import { useRouter } from "next/router";
 
 export default function Home({ results }) {
   const router = useRouter();
+
   const featuredHotels = () => {
     const hotels = results.filter((hotel) => hotel.category === "hotel");
     const featured = hotels.filter((featured) => featured.featured === true);
