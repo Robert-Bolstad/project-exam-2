@@ -34,7 +34,15 @@ const AddRooms = ({ editData, getRooms }) => {
 
   useEffect(() => {
     if (editData) {
-      setRooms(editData.rooms);
+      let roomsInfo = editData.rooms;
+
+      roomsInfo.forEach((room) => {
+        let quantityNr = room.quantity.length - 1;
+
+        room.quantity = quantityNr;
+      });
+
+      setRooms(roomsInfo);
     }
   }, []);
 
