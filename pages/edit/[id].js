@@ -104,8 +104,8 @@ export default function edit({ establishment }) {
 
     const geometry = {
       geometry: {
-        latitude: details.latitude,
-        longitude: details.longitude,
+        latitude: Number(details.latitude),
+        longitude: Number(details.longitude),
       },
     };
 
@@ -120,7 +120,18 @@ export default function edit({ establishment }) {
       address: details.address,
     };
 
-    const roomData = { rooms: rooms };
+    let roomsInfo = rooms;
+
+    roomsInfo.forEach((room) => {
+      let quantity = [];
+      let i;
+      for (i = 1; i < room.quantity + 1; i++) {
+        quantity.push(i);
+      }
+      room.quantity = quantity;
+    });
+
+    const roomData = { rooms: roomsInfo };
 
     const data = Object.assign(
       generalData,
@@ -132,9 +143,6 @@ export default function edit({ establishment }) {
 
     const imageId = establishment.image[0].id;
 
-    console.log(data);
-    console.log(hotelImage);
-
     if (hotelImage === null) {
       axios
         .put(BASE_URL + "/establishments/" + establishment.id, data)
@@ -143,7 +151,8 @@ export default function edit({ establishment }) {
         })
         .then((res) => {
           console.log(res);
-          alert("You successfully uploaded");
+          alert("Update Success");
+          router.push("/admin");
         })
         .catch((error) => {
           console.log(error);
@@ -167,7 +176,8 @@ export default function edit({ establishment }) {
         })
         .then((res) => {
           console.log(res);
-          alert("You successfully uploaded");
+          alert("Update Success");
+          router.push("/admin");
         })
         .catch((error) => {
           console.log(error);
@@ -229,8 +239,6 @@ export async function getStaticPaths() {
   try {
     const response = await axios.get(BASE_URL + "/establishments");
     const establishments = response.data;
-
-    console.log(establishments);
 
     const paths = establishments.map((establishment) => ({
       params: { id: establishment.id.toString() },
