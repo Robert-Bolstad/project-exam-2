@@ -15,7 +15,7 @@ const Nav = () => {
       case "/admin":
         setAdmin(true);
         break;
-      case "/addEstablishment":
+      case "/addestablishment":
         setAdmin(true);
         break;
       case "/edit/[id]":
