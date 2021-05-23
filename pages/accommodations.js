@@ -81,7 +81,7 @@ export default function Accommodations({ results }) {
                   <div className="accommodation-card" key={card.id}>
                     <div className="accommodation-card__img">
                       <Image
-                        src={BASE_URL + card.image[0].url}
+                        src={card.image[0].url}
                         width="auto"
                         height="auto"
                         alt="image of establishment"
