@@ -122,7 +122,18 @@ export default function addEstablishment() {
       address: details.address,
     };
 
-    const roomData = { rooms: rooms };
+    let roomsInfo = rooms;
+
+    roomsInfo.forEach((room) => {
+      let quantity = [];
+      let i;
+      for (i = 1; i < room.quantity + 1; i++) {
+        quantity.push(i);
+      }
+      room.quantity = quantity;
+    });
+
+    const roomData = { rooms: roomsInfo };
 
     const data = Object.assign(
       generalData,
@@ -149,6 +160,7 @@ export default function addEstablishment() {
       .then((res) => {
         console.log(res);
         alert("You successfully uploaded");
+        router.push("/admin");
       })
       .catch((error) => {
         console.log(error);
