@@ -1,14 +1,12 @@
 .Messages {
   display: flex;
-  flex-flow: wrap;
+  flex-direction: column-reverse;
   padding: $contentpadding / 2;
   &__heading {
     color: $secondary;
     font-size: 1.4em;
     padding: $contentpadding;
-    padding-left: $contentpadding/2;
-    padding-bottom: $contentpadding * 2;
-    padding-top: $contentpadding * 2;
+    padding-top: $contentpadding * 2.5;
     width: 100%;
   }
   &__wrapper {
@@ -27,9 +25,7 @@
     background-color: $button;
     color: $white;
   }
-  &__btn:hover {
-    background-color: $hover-blue;
-  }
+
   &__btn-img {
     height: 20px;
     padding: 3px;
@@ -39,9 +35,15 @@
     background-color: $secondary;
     cursor: pointer;
   }
+  &__btn--unread:hover {
+    background-color: $hover-orange;
+  }
   &__btn--read {
     background-color: $button;
     cursor: pointer;
+  }
+  &__btn--read:hover {
+    background-color: $hover-blue;
   }
   &__btn-img--open {
     transform: rotate(90deg);
