@@ -21,7 +21,7 @@ export default function Establishment({ establishment }) {
           </div>
           <div className="establishment__image">
             <Image
-              src={BASE_URL + establishment.image[0].url}
+              src={establishment.image[0].url}
               width={establishment.image[0].width}
               height={establishment.image[0].width}
               alt="image of establishment"
