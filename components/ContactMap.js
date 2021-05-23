@@ -13,7 +13,6 @@ const ContactMap = (props) => {
   useEffect(() => {
     window.onresize = doResize;
     function doResize() {
-      console.log("resize");
       setViewport({
         ...viewport,
         latitude: props.lat,
