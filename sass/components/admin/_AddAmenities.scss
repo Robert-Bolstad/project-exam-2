@@ -37,6 +37,9 @@
     margin-bottom: $contentpadding/2;
     cursor: pointer;
   }
+  &__add-btn:hover {
+    background-color: $hover-blue;
+  }
   &__item-wrapper {
     display: flex;
     align-items: center;
@@ -52,7 +55,7 @@
     cursor: pointer;
     font-size: 1em;
     font-weight: bolder;
-    color: $secondary;
+    color: $red;
   }
   &__submit {
     display: none;

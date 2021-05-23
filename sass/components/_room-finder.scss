@@ -146,17 +146,21 @@
   }
   &__book-btn-wrapper {
     width: 100%;
+    padding: $contentpadding/2;
   }
   &__book-btn {
     width: calc(100% - 16px);
     margin: 0.5rem;
     margin-top: 0px;
-    border-radius: 15px;
+    border-radius: 5px;
     border: 0px;
     padding: 0.5rem;
     background-color: #3d5e78;
     color: #ffffff;
     cursor: pointer;
+  }
+  &__book-btn:hover {
+    background-color: $hover-blue;
   }
 }
 

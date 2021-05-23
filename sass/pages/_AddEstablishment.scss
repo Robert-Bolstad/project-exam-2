@@ -23,6 +23,9 @@
     border-radius: 5px;
     cursor: pointer;
   }
+  &__btn:hover {
+    background-color: $hover-teal;
+  }
 }
 @media screen and (min-width: 600px) {
   .AddEstablishment {

@@ -27,6 +27,9 @@
     background-color: $button;
     color: $white;
   }
+  &__btn:hover {
+    background-color: $hover-blue;
+  }
   &__btn-img {
     height: 20px;
     padding: 3px;
@@ -34,9 +37,11 @@
   }
   &__btn--unread {
     background-color: $secondary;
+    cursor: pointer;
   }
   &__btn--read {
     background-color: $button;
+    cursor: pointer;
   }
   &__btn-img--open {
     transform: rotate(90deg);

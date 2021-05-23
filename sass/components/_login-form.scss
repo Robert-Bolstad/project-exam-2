@@ -24,11 +24,12 @@
   }
   &__submit {
     padding: $contentpadding/2;
-    border-radius: 15px;
+    border-radius: 5px;
     width: 100%;
     border: 0px;
     background-color: $button;
     color: $white;
+    cursor: pointer;
   }
   &__group--btn {
     border-radius: 15px;

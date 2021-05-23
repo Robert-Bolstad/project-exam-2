@@ -19,9 +19,12 @@
     display: block;
     width: 120px;
     color: $white;
-    background: $link;
-    border-radius: 15px;
+    background-color: $link;
+    border-radius: 5px;
     font-size: 0.8em;
+  }
+  &__link:hover {
+    background-color: $hover-teal;
   }
 
   &__price {

@@ -20,7 +20,6 @@
 @import "components/room-finder";
 @import "components/BookingForm";
 @import "components/BookingInfo";
-@import "components/Establishments";
 
 // components/admin
 @import "components/admin/nav-admin";
@@ -29,6 +28,7 @@
 @import "components/admin/AddRooms";
 @import "components/admin/EstablishmentDetails";
 @import "components/admin/messages";
+@import "components/admin/Establishments";
 
 // pagestyles
 @import "pages/login";

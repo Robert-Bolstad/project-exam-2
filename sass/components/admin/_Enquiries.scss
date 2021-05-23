@@ -26,6 +26,9 @@
     color: $white;
     cursor: pointer;
   }
+  &__btn:hover {
+    background-color: $hover-blue;
+  }
   &__btn-img {
     height: 20px;
     padding: 3px;

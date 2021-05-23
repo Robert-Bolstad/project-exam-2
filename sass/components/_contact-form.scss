@@ -37,8 +37,11 @@
     border: 0.5px;
     box-shadow: $bordershadow;
     background-color: $button;
-    border-radius: 15px;
+    border-radius: 5px;
     cursor: pointer;
+  }
+  &__submit:hover {
+    background-color: $hover-blue;
   }
   &__success {
     padding-left: $contentpadding;

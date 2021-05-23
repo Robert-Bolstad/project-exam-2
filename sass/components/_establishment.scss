@@ -55,11 +55,15 @@
   &__btn {
     width: 100%;
     margin: $contentpadding / 2;
-    border-radius: 15px;
+    border-radius: 5px;
     border: 0px;
     padding: $contentpadding/2;
     background-color: $button;
     color: $white;
+    cursor: pointer;
+  }
+  &__btn:hover {
+    background-color: $hover-blue;
   }
   &__map {
     height: 250px;

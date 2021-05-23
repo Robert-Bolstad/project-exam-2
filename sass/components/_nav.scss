@@ -1,12 +1,12 @@
 .nav {
   box-shadow: $bordershadow;
-  background-color: $primary;
+  background-color: $white;
   z-index: 99;
 
   &__inner {
     display: flex;
     flex-wrap: wrap;
-    background-color: $primary;
+    background-color: $white;
     justify-content: space-between;
     align-items: center;
     max-width: $pagewidth;
@@ -16,7 +16,6 @@
   &__brand {
     display: flex;
     padding: $contentpadding;
-    color: $white;
   }
 
   &__logo-text {
@@ -30,7 +29,7 @@
     height: 28px;
   }
   &__site-name--color {
-    color: $secondary;
+    color: $primary;
   }
   &__site-subline {
     font-family: $subheadline;
@@ -45,6 +44,7 @@
     border: 0px;
     display: flex;
     background-color: transparent;
+    cursor: pointer;
   }
 
   &__list {
@@ -63,8 +63,8 @@
   }
   &__link {
     text-decoration: none;
-    color: $white;
-    background-color: $gray;
+    color: $link;
+    background-color: $light-gray;
     padding: 20px;
     width: 100%;
     display: block;
@@ -73,6 +73,7 @@
   }
   &__link:hover {
     background-color: $link;
+    color: $white;
   }
 }
 
@@ -93,14 +94,14 @@
     &__link {
       background-color: transparent;
       width: auto;
-      color: $white;
+      color: $primary;
       padding: 0px;
       margin: $contentpadding;
-      border-bottom: 1px solid $primary;
     }
     &__link:hover {
       background-color: transparent;
-      border-bottom: 1px solid $white;
+      border-bottom: 1px solid $primary;
+      color: $primary;
     }
   }
 }

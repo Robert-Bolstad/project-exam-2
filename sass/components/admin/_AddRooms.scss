@@ -63,6 +63,9 @@
     cursor: pointer;
     border-radius: 5px;
   }
+  &__submit:hover {
+    background-color: $hover-blue;
+  }
   &__list {
     background-color: $light-gray;
     border: 0px;
@@ -90,6 +93,9 @@
     background-color: $button;
     color: $white;
     cursor: pointer;
+  }
+  &__remove:hover {
+    background-color: $hover-blue;
   }
   &__submit-rooms {
     display: none;

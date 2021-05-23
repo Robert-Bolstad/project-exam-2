@@ -92,6 +92,9 @@
     font-family: $subheadline;
     cursor: pointer;
   }
+  &__input--image:hover {
+    background-color: $hover-blue;
+  }
   &__description {
     padding: $contentpadding/2;
   }
