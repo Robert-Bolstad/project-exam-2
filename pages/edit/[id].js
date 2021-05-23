@@ -18,7 +18,6 @@ export default function edit({ establishment }) {
   const [amenitiesList, setAmenitiesList] = useState(null);
   const [rooms, setRooms] = useState(null);
   const [reload, setReload] = useState(false);
-
   const [submitting, setSubmiting] = useState(false);
 
   useEffect(() => {
@@ -152,6 +151,7 @@ export default function edit({ establishment }) {
         .then((res) => {
           console.log(res);
           alert("Update Success");
+          setSubmiting(false);
           router.push("/admin");
         })
         .catch((error) => {
@@ -177,6 +177,7 @@ export default function edit({ establishment }) {
         .then((res) => {
           console.log(res);
           alert("Update Success");
+          setSubmiting(false);
           router.push("/admin");
         })
         .catch((error) => {
@@ -224,9 +225,11 @@ export default function edit({ establishment }) {
             <button
               className="AddEstablishment__btn"
               type="button"
+              disabled={submitting}
               onClick={submitForm}
+              style={submitting ? { opacity: "0.7" } : null}
             >
-              Edit Establishment
+              {submitting ? "Submitting" : "Edit Establishment"}
             </button>
           </div>
         </div>

@@ -18,7 +18,6 @@ export default function addEstablishment() {
   const [amenitiesList, setAmenitiesList] = useState(null);
   const [rooms, setRooms] = useState(null);
   const [reload, setReload] = useState(false);
-
   const [submitting, setSubmiting] = useState(false);
 
   useEffect(() => {
@@ -146,7 +145,6 @@ export default function addEstablishment() {
     axios
       .post(BASE_URL + "/establishments", data)
       .then((res) => {
-        console.log(res);
         return res.data.id;
       })
       .then((refId) => {
@@ -160,6 +158,7 @@ export default function addEstablishment() {
       .then((res) => {
         console.log(res);
         alert("You successfully uploaded");
+        setSubmiting(false);
         router.push("/admin");
       })
       .catch((error) => {
@@ -202,9 +201,11 @@ export default function addEstablishment() {
             <button
               className="AddEstablishment__btn"
               type="button"
+              disabled={submitting}
               onClick={submitForm}
+              style={submitting ? { opacity: "0.7" } : null}
             >
-              Add Establishment
+              {submitting ? "Submitting" : "Add Establishment"}
             </button>
           </div>
         </div>
