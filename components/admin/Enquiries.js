@@ -1,5 +1,5 @@
 const Enquiries = ({ data }) => {
-  function openEnquiry(element, id) {
+  function openEnquiry(element) {
     const enquiry = element.parentElement.querySelector(".Enquiries__enquiry");
     const btnImg = element.querySelector(".Enquiries__btn-img");
     enquiry.classList.toggle("Enquiries__enquiry--open");

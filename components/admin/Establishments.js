@@ -1,5 +1,3 @@
-import Image from "next/image";
-import { BASE_URL } from "../../settings/api";
 import Link from "next/link";
 import doDelete from "../../utils/doDelete";
 const Establishments = ({ data }) => {
