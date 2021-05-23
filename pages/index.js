@@ -150,7 +150,6 @@ export async function getStaticProps() {
     const response = await axios.get(BASE_URL + "/establishments");
 
     results = response.data;
-    console.log(results);
   } catch (error) {
     console.log(error);
   }
