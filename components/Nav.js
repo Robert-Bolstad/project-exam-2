@@ -1,11 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import AuthContext from "../context/AuthContext";
 
 const Nav = () => {
   const path = useRouter().pathname;
   const [admin, setAdmin] = useState();
+  const [, setAuth] = useContext(AuthContext);
+  const router = useRouter();
 
   useEffect(() => {
     switch (path) {
@@ -22,6 +25,11 @@ const Nav = () => {
         setAdmin(false);
     }
   }, []);
+
+  const doLogout = () => {
+    setAuth([]);
+    router.push("/");
+  };
 
   function clickBurger() {
     if (admin === false) {
@@ -108,7 +116,13 @@ const Nav = () => {
             </li>
 
             <li className="nav-admin__item">
-              <button className="nav-admin__btn">Logout</button>
+              <button
+                type="button"
+                onClick={() => doLogout()}
+                className="nav-admin__btn"
+              >
+                Logout
+              </button>
             </li>
           </ul>
         </div>
