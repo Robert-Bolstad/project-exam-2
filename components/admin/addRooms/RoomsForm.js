@@ -29,8 +29,6 @@ function RoomsForm({ addRoom, submitting }) {
       bedrooms: data.bedrooms,
       quantity: data.quantity,
     });
-
-    console.log(room);
   };
 
   const { register, handleSubmit, errors } = useForm({
@@ -38,15 +36,6 @@ function RoomsForm({ addRoom, submitting }) {
   });
 
   return (
-    // <div>
-    //   <input
-    //     name="task"
-    //     type="text"
-    //     value={room.room}
-    //     onChange={handleTaskInputChange}
-    //   />
-    //   <button onClick={(e) => handleClick(e)}>add</button>
-    // </div>
     <form onSubmit={handleSubmit(onSubmit)} className="AddRooms__form">
       <fieldset className="AddRooms__fieldset">
         <div className="AddRooms__wrapper">
