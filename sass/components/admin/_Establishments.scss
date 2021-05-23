@@ -17,6 +17,17 @@
   }
   &__link {
     color: $link;
+    margin-left: $contentpadding/2;
+    font-size: 1em;
+  }
+  &__delete-btn {
+    margin-left: $contentpadding * 2;
+    border: 0px;
+    background-color: $white;
+    color: $red;
+    padding: 0px;
+    font-size: 1em;
+    cursor: pointer;
   }
 
   &__wrapper {
@@ -35,6 +46,9 @@
     background-color: $button;
     color: $white;
     cursor: pointer;
+  }
+  &__btn:hover {
+    background-color: $hover-blue;
   }
   &__btn-img {
     height: 20px;
@@ -79,15 +93,18 @@
   &__contact-detail {
     font-weight: lighter;
   }
-  &__rooms {
-    padding: $contentpadding/2;
+  &__booking-room {
+    padding-bottom: $contentpadding/2;
+    font-family: $subheadline;
   }
   &__rooms-heading {
     font-size: 1em;
     margin-bottom: 0.5em;
+    padding-left: $contentpadding/2;
   }
   &__booking-rooms {
     font-size: 1em;
     margin-bottom: 0.5em;
+    padding: $contentpadding/2;
   }
 }
