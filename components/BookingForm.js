@@ -49,12 +49,11 @@ const Booking = ({
   const onSubmit = async (data) => {
     const rooms = getRooms();
     const post = Object.assign(data, rooms);
-    console.log(post);
 
     setSubmitting(true);
 
     try {
-      const response = await axios.post(BASE_URL + "/enquiries", post);
+      await axios.post(BASE_URL + "/enquiries", post);
     } catch (error) {
       console.log("error", error);
     } finally {
