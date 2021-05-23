@@ -1,4 +1,3 @@
-import React from "react";
 import Rooms from "./Rooms";
 
 function RoomsList({ rooms, removeRoom }) {
@@ -6,13 +5,8 @@ function RoomsList({ rooms, removeRoom }) {
     <>
       {rooms.map((room) => {
         return (
-          <ul className="AddRooms__list">
-            <Rooms
-              key={room.id}
-              room={room}
-              file={room.file}
-              removeRoom={removeRoom}
-            />
+          <ul key={room.id} className="AddRooms__list">
+            <Rooms room={room} file={room.file} removeRoom={removeRoom} />
           </ul>
         );
       })}
