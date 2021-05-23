@@ -38,15 +38,6 @@ const Establishments = ({ data }) => {
               />
             </button>
             <div className="Establishments__establishment">
-              <div className="Establishments__img">
-                {console.log(data)}
-                <Image
-                  src={BASE_URL + data.image[0].url}
-                  width={data.image[0].width}
-                  height={data.image[0].height}
-                  alt="hotel image"
-                />
-              </div>
               <div className="Establishments__general">
                 <p className="Establishments__info">
                   Name:
@@ -98,29 +89,12 @@ const Establishments = ({ data }) => {
                     );
                   })}
                 </ul>
-                <p className="Establishments__info">
-                  Address:
-                  <span className="Establishments__info-detail">
-                    {" " + data.address}
-                  </span>
-                </p>
-                <p className="Establishments__info">
-                  Email:
-                  <span className="Establishments__info-detail">
-                    {" " + data.email}
-                  </span>
-                </p>
-                <p className="Establishments__info">
-                  Phone:
-                  <span className="Establishments__info-detail">
-                    {" " + data.phone}
-                  </span>
-                </p>
               </div>
               <Link href={"/edit/" + data.id}>
-                <a className="Establishments__link">+ Edit</a>
+                <a className="Establishments__link">Edit</a>
               </Link>
               <button
+                className="Establishments__delete-btn"
                 type="button"
                 onClick={() => {
                   doDelete(data);
