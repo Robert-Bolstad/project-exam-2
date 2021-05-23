@@ -10,7 +10,7 @@ import AddRooms from "../components/admin/addEstablishment/AddRooms";
 import { BASE_URL } from "../settings/api";
 import axios from "axios";
 
-export default function addEstablishment() {
+export default function addestablishment() {
   const [auth] = useContext(AuthContext);
   const router = useRouter();
   const [hotelImage, setHotelImage] = useState(null);
