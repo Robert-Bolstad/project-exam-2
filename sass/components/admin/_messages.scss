@@ -1,6 +1,6 @@
 .Messages {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   padding: $contentpadding / 2;
   &__heading {
     color: $secondary;
@@ -8,6 +8,7 @@
     padding: $contentpadding;
     padding-top: $contentpadding * 2.5;
     width: 100%;
+    padding-bottom: 24px;
   }
   &__wrapper {
     padding: $contentpadding/2;
