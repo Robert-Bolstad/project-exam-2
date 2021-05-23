@@ -29,8 +29,7 @@ const ContactForm = () => {
     setSubmitting(true);
 
     try {
-      const response = await axios.post(BASE_URL + "/messages", data);
-      console.log(data);
+      await axios.post(BASE_URL + "/messages", data);
     } catch (error) {
       console.log("error", error);
     } finally {
@@ -152,7 +151,13 @@ const ContactForm = () => {
         </div>
 
         <div className="contact-form__group">
-          <button className="contact-form__submit">Submit</button>
+          <button
+            type="submit"
+            className="contact-form__submit"
+            disabled={submitting}
+          >
+            {submitting ? "Submitting" : "Submit"}
+          </button>
         </div>
       </fieldset>
     </form>
