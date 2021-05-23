@@ -1,7 +1,7 @@
 import Link from "next/link";
 import doDelete from "../../utils/doDelete";
 const Establishments = ({ data }) => {
-  function openEnquiry(element, id) {
+  function openEnquiry(element) {
     const establishment = element.parentElement.querySelector(
       ".Establishments__establishment"
     );
