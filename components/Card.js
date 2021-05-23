@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { BASE_URL } from "../settings/api";
 import Link from "next/link";
 const Card = ({ hotel }) => {
   const link = "/detail/" + hotel.id;
@@ -7,7 +6,7 @@ const Card = ({ hotel }) => {
     <div className="card">
       <div className="card__img">
         <Image
-          src={BASE_URL + hotel.image[0].url}
+          src={hotel.image[0].url}
           width={hotel.image[0].width}
           height={hotel.image[0].height}
           alt="hotel image"
