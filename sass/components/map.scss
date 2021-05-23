@@ -7,8 +7,7 @@
   top: 50%;
   left: 50%;
   border: 1px solid black;
-  transform: translate(-50%, -50%) scale(0);
-  transition: 200ms ease-in-out;
+  display: none;
   z-index: 99;
   &__marker {
     padding: 8px;
@@ -57,7 +56,20 @@
     opacity: 1;
   }
   &__close {
+    font-family: $headline;
+    font-size: 1.2rem;
+    width: 30px;
+    height: 30px;
     margin: $contentpadding;
+    background-color: $button;
+    border: 0px;
+    cursor: pointer;
+    border-radius: 5px;
+    color: $white;
+    z-index: 999;
+  }
+  &__hover {
+    background-color: $hover-blue;
   }
 }
 
@@ -68,13 +80,18 @@
 
 @media screen and (min-width: 1000px) {
   .map {
+    transition: none;
     transform: none;
     position: inherit;
+    display: block;
     width: 40%;
     height: 70vh;
     max-height: 500px;
     box-shadow: none;
     border: 0px;
     margin-top: $contentpadding / 2;
+    &__overlay {
+      display: none;
+    }
   }
 }
