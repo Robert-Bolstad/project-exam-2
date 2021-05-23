@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { BASE_URL } from "../../settings/api";
 import axios from "axios";
 
