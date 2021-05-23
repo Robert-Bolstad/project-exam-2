@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schema } from "../../../utils/schemaValidators/establishmentDetailsForm";
 import Image from "next/image";
-import { BASE_URL } from "../../../settings/api";
 
 const EstablishmentDetails = ({ editData, getDetails, getHotelImage }) => {
   const defaultImage = "/placeholder.jpg";
@@ -21,8 +20,6 @@ const EstablishmentDetails = ({ editData, getDetails, getHotelImage }) => {
     longitude: "",
     featured: false,
   });
-
-  console.log(editData);
 
   useEffect(() => {
     if (selectedFile) {
@@ -132,7 +129,7 @@ const EstablishmentDetails = ({ editData, getDetails, getHotelImage }) => {
             ) : null}
             {editData && selectedFile === null ? (
               <Image
-                src={BASE_URL + editData.image[0].url}
+                src={editData.image[0].url}
                 width="900px"
                 height="600px"
                 alt="Display image"
@@ -151,6 +148,7 @@ const EstablishmentDetails = ({ editData, getDetails, getHotelImage }) => {
                 className="EstablishmentDetails__input EstablishmentDetails__input--image"
                 type="file"
                 name="image"
+                accept="image/*"
                 id="EstablishmentDetails__input--name"
                 onChange={(e) => setSelectedFile(e.target.files[0])}
               />
