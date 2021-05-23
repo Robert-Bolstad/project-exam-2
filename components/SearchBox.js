@@ -68,9 +68,6 @@ const SearchBox = (data) => {
 
   const handleInputChange = (e) => {
     switch (e.target.name) {
-      // case "search":
-      //   setInputValue({ ...inputValue, name: e.target.value });
-      //   break;
       case "checkIn":
         if (e.target.value <= dateToday) {
           setInputValue({ ...inputValue, checkIn: dateToday.slice(0, 10) });

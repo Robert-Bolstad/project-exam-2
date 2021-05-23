@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { BASE_URL } from "../settings/api";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
@@ -113,9 +112,6 @@ const RoomFinder = ({ data }) => {
 
   const handleInputChange = (e) => {
     switch (e.target.name) {
-      // case "search":
-      //   setInputValue({ ...inputValue, name: e.target.value });
-      //   break;
       case "checkIn":
         if (e.target.value <= dateToday) {
           setInputValue({ ...inputValue, checkIn: dateToday.slice(0, 10) });
