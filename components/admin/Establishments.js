@@ -15,7 +15,7 @@ const Establishments = ({ data }) => {
       <div className="Establishments__top">
         <h1 className="Establishments__heading">Establishments</h1>
 
-        <Link href="/addEstablishment">
+        <Link href="/addestablishment">
           <a className="Establishments__link">+ Add New</a>
         </Link>
       </div>
