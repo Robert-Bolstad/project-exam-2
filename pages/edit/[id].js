@@ -199,7 +199,7 @@ export default function edit({ establishment }) {
 
   return (
     <Layout>
-      <Head title="Add Establishment" />
+      <Head title="Edit Establishment" />
       <main className="AddEstablishment">
         <div className="AddEstablishment__wrapper">
           <h1 className="AddEstablishment__heading">Edit Establishment</h1>
