@@ -1,8 +1,6 @@
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { BASE_URL } from "../settings/api";
 
 const ResultMap = (props) => {
   const [viewport, setViewport] = useState({
@@ -66,7 +64,7 @@ const ResultMap = (props) => {
             <div className="map__info">
               <div className="map__img">
                 <Image
-                  src={BASE_URL + selectedMarker.image[0].url}
+                  src={selectedMarker.image[0].url}
                   width="auto"
                   height="80px"
                   alt="image of establishment"
@@ -74,9 +72,6 @@ const ResultMap = (props) => {
               </div>
               <h4 className="map__name">{selectedMarker.name}</h4>
               <p className="map__price">${selectedMarker.price}</p>
-              <Link href={`/detail/${selectedMarker.id}`}>
-                <a className="map__link">Visit page</a>
-              </Link>
             </div>
           </Popup>
         ) : null}
