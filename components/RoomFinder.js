@@ -153,7 +153,7 @@ const RoomFinder = ({ data }) => {
                 <div>
                   <img
                     className="room-finder__img"
-                    src="/check-In.svg"
+                    src="/checkin.svg"
                     alt="icon"
                   />
                   <input
@@ -187,7 +187,7 @@ const RoomFinder = ({ data }) => {
                 <div className="room-finder__input-wrapper">
                   <img
                     className="room-finder__img"
-                    src="/user.svg"
+                    src="/usericon.svg"
                     alt="icon"
                   />
                   <input
@@ -229,14 +229,14 @@ const RoomFinder = ({ data }) => {
                       src={data.image[0].url}
                       width="1000px"
                       height="666px"
-                      alt="logo"
+                      alt="image of hotel"
                     />
                   </div>
                   <h4 className="room-finder__room-heading">{room.name}</h4>
                   <div className="room-finder__room-info">
                     <div className="room-finder__room-info--icon">
                       <Image
-                        src="/user.svg"
+                        src="/usericon.svg"
                         width="15px"
                         height="15px"
                         alt="logo"

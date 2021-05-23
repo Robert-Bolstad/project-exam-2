@@ -144,7 +144,7 @@ const SearchBox = (data) => {
           <div className="searchbox__group searchbox__group--check-in">
             <span className="searchbox__group-type">Check In</span>
             <div>
-              <img className="searchbox__img" src="/check-In.svg" alt="icon" />
+              <img className="searchbox__img" src="/checkin.svg" alt="icon" />
               <input
                 className="searchbox__check-in searchbox__input"
                 type="date"
@@ -170,7 +170,7 @@ const SearchBox = (data) => {
           <div className="searchbox__group searchbox__group--guests">
             <span className="searchbox__group-type">Guests</span>
             <div className="searchbox__input-wrapper">
-              <img className="searchbox__img" src="/user.svg" alt="icon" />
+              <img className="searchbox__img" src="/usericon.svg" alt="icon" />
               <input
                 className="searchbox__input"
                 type="number"
