@@ -12,9 +12,8 @@ const ResultMap = (props) => {
   });
 
   useEffect(() => {
-    window.onresize = doALoadOfStuff;
-    function doALoadOfStuff() {
-      console.log("resize");
+    window.onresize = doResize;
+    function doResize() {
       setViewport({
         ...viewport,
         latitude: 60.391262,

@@ -11,8 +11,8 @@ const ContactMap = (props) => {
   });
 
   useEffect(() => {
-    window.onresize = doALoadOfStuff;
-    function doALoadOfStuff() {
+    window.onresize = doResize;
+    function doResize() {
       console.log("resize");
       setViewport({
         ...viewport,
