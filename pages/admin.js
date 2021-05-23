@@ -54,7 +54,7 @@ export default function admin({ messages, enquiries, establishments }) {
         <div className="admin__container">
           <div className="admin__navigation">
             <button
-              className="admin__btn"
+              className="admin__btn admin__btn--active"
               onClick={(event) => navigate(event.currentTarget, "enquiries")}
             >
               Enquiries
