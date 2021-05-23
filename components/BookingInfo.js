@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { BASE_URL } from "../settings/api";
 const BookingInfo = ({
   data,
   calculateRoomPrice,
@@ -14,7 +13,7 @@ const BookingInfo = ({
       <div className="bookingInfo__img">
         <Image
           className="room-finder__icon"
-          src={BASE_URL + data.hotelInfo.image[0].url}
+          src={data.hotelInfo.image[0].url}
           width={data.hotelInfo.image[0].width}
           height={data.hotelInfo.image[0].height}
           alt="hotel image"
