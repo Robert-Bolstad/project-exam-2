@@ -100,7 +100,7 @@ export default function Home({ results }) {
               >
                 View all (
                 <span className="featured__link--number">
-                  {getLength("hotel")}
+                  {getLength("bed_and_breakfast")}
                 </span>
                 )
               </button>
@@ -130,7 +130,7 @@ export default function Home({ results }) {
               >
                 View all (
                 <span className="featured__link--number">
-                  {getLength("hotel")}
+                  {getLength("guesthouse")}
                 </span>
                 )
               </button>
