@@ -91,7 +91,7 @@ export default function admin({ messages, enquiries, establishments }) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   let messages;
   let enquiries;
   let establishments;
