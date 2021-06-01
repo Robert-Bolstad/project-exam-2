@@ -19,6 +19,7 @@ export default function addestablishment() {
   const [rooms, setRooms] = useState(null);
   const [reload, setReload] = useState(false);
   const [submitting, setSubmiting] = useState(false);
+  const [trySubmitting, setTrySubmiting] = useState(false);
 
   useEffect(() => {
     if (
@@ -68,6 +69,7 @@ export default function addestablishment() {
   });
 
   const handleUpload = () => {
+    setTrySubmiting(true);
     let main = [];
     let families = [];
     let area = [];
@@ -157,7 +159,8 @@ export default function addestablishment() {
       })
       .then((res) => {
         console.log(res);
-        alert("You successfully uploaded");
+        alert("Upload Success");
+        setTrySubmiting(false);
         setSubmiting(false);
         router.push("/admin");
       })
@@ -201,11 +204,11 @@ export default function addestablishment() {
             <button
               className="AddEstablishment__btn"
               type="button"
-              disabled={submitting}
+              disabled={trySubmitting}
               onClick={submitForm}
-              style={submitting ? { opacity: "0.7" } : null}
+              style={trySubmitting ? { opacity: "0.7" } : null}
             >
-              {submitting ? "Submitting" : "Add Establishment"}
+              {trySubmitting ? "Submitting" : "Add Establishment"}
             </button>
           </div>
         </div>

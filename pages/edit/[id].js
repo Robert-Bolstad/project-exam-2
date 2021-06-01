@@ -19,6 +19,7 @@ export default function edit({ establishment }) {
   const [rooms, setRooms] = useState(null);
   const [reload, setReload] = useState(false);
   const [submitting, setSubmiting] = useState(false);
+  const [trySubmitting, setTrySubmiting] = useState(false);
 
   useEffect(() => {
     if (
@@ -66,6 +67,7 @@ export default function edit({ establishment }) {
   });
 
   const handleUpload = () => {
+    setTrySubmiting(true);
     let main = [];
     let families = [];
     let area = [];
@@ -151,6 +153,7 @@ export default function edit({ establishment }) {
         .then((res) => {
           console.log(res);
           alert("Update Success");
+          setTrySubmiting(false);
           setSubmiting(false);
           router.push("/admin");
         })
@@ -177,6 +180,7 @@ export default function edit({ establishment }) {
         .then((res) => {
           console.log(res);
           alert("Update Success");
+          setTrySubmiting(false);
           setSubmiting(false);
           router.push("/admin");
         })
@@ -225,11 +229,11 @@ export default function edit({ establishment }) {
             <button
               className="AddEstablishment__btn"
               type="button"
-              disabled={submitting}
+              disabled={trySubmitting}
               onClick={submitForm}
-              style={submitting ? { opacity: "0.7" } : null}
+              style={trySubmitting ? { opacity: "0.7" } : null}
             >
-              {submitting ? "Submitting" : "Edit Establishment"}
+              {trySubmitting ? "Submitting" : "Edit Establishment"}
             </button>
           </div>
         </div>
