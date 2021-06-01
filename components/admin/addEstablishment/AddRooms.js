@@ -6,13 +6,6 @@ const AddRooms = ({ editData, getRooms }) => {
   const [rooms, setRooms] = useState([]);
   const [submitting, setSubmitting] = useState(false);
 
-  // useEffect(() => {
-  //   const storageData = JSON.parse(localStorage.getItem("rooms"));
-  //   if (storageData) {
-  //     setRooms(storageData);
-  //   }
-  // }, []);
-
   useEffect(() => {
     if (rooms) {
       getRooms(rooms);
