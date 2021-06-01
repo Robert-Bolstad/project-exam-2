@@ -175,9 +175,6 @@ export async function getStaticPaths() {
   try {
     const response = await axios.get(BASE_URL + "/establishments");
     const establishments = response.data;
-
-    console.log(establishments);
-
     const paths = establishments.map((establishment) => ({
       params: { id: establishment.id.toString() },
     }));
