@@ -134,7 +134,7 @@ export default function Accommodations({ results }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   let results = [];
 
   try {

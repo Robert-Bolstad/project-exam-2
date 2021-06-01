@@ -143,7 +143,7 @@ export default function Home({ results }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   let results = [];
 
   try {
